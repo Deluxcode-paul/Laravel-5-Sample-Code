@@ -1,0 +1,73 @@
+.btn {
+    transition-duration: .1s;
+    color: $clr-grey1;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 10px;
+    min-width: 120px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    &.is-wide {
+        width: 100%;
+        display: block;
+    }
+    @mixin btn-color($clr, $lighten: 10%, $darken: 10%){
+        background-color: $clr;
+        .no-touchevents & {
+            &:hover {background-color: lighten($clr, $lighten);}
+            &:active {background-color: darken($clr, $darken);}
+        }
+    }
+    @include btn-color($clr-text);
+    &.is-purple {@include btn-color($clr-purple, 7%, 7%);}
+    &.is-brown {@include btn-color($clr-brown);}
+    &.is-green {@include btn-color($clr-green, 5%);}
+
+    &.is-large {
+        padding-top: 14px;
+        padding-bottom: 13px;
+        font-size: 20px;
+        line-height: 24px;
+        .form-actions & {
+            min-width: 240px;
+        }
+    }
+
+    &.with-icon {
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        & > span {display: inline-block;}
+        svg.icon {
+            height: 16px;
+            width: 16px;
+            float: left;
+            position: relative;
+            margin-right: 7px;
+            top: 1px;
+            fill: currentColor;
+            &.icon-check {
+                height: 14px;
+                width: 14px;
+            }
+            &.icon-basket {
+                height: 18px;
+                width: 24px;
+                top: -1px;
+            }
+        }
+    }
+}
+
+a.btn {
+    text-decoration: none;
+    outline: none;
+}
+
+button.btn {
+    border: none;
+    margin: 0;
+}

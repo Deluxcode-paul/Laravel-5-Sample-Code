@@ -1,0 +1,124 @@
+.ask {
+    background: $clr-grey1-light;
+    &__breadcrumb {
+        background: $clr-grey1;
+        color: $clr-text;
+    }
+    &__wrapper {
+        padding-bottom: 94px;
+    }
+    &__content {
+        max-width: 850px;
+        margin: 0 auto;
+        .heading-decorative {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba($clr-text, .2);
+            @include breakpoint($mq-mobile-medium) {
+                padding: 20px 0;
+                margin-bottom: 20px;
+            }
+        }
+        .form-ask {
+            max-width: 700px;
+            margin: 0 auto;
+            .form-input {
+                textarea {height: 110px;}
+            }
+            .form-label {
+                span, i {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                }
+                span {opacity: .5;}
+            }
+            .rating-label {
+                float: left;
+            }
+            .rating {
+                float: left;
+                display: flex;
+                flex-direction: row-reverse;
+                font-size: 0;
+                height: 18px;
+                margin-left: 10px;
+                vertical-align: middle;
+                li {
+                    display: inline-block;
+                    &:hover {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                    &:hover ~ li{
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                .icon {
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 6px;
+                    fill: $clr-white;
+                    stroke: $clr-color1;
+                    stroke-width: 8px;
+                }
+                label {
+                    cursor: pointer;
+                    display: inline-block;
+                }
+                input {
+                    display: none;
+                }
+                input:checked + .icon {
+                    fill: $clr-color1;
+                }
+                &[data-rating="1"] {
+                    li:nth-child(5) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="2"] {
+                    li:nth-child(5),
+                    li:nth-child(4) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="3"] {
+                    li:nth-child(5),
+                    li:nth-child(4),
+                    li:nth-child(3) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="4"] {
+                    li:nth-child(5),
+                    li:nth-child(4),
+                    li:nth-child(3),
+                    li:nth-child(2) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="5"] {
+                    li {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .actions {padding: 10px 0;}
+}

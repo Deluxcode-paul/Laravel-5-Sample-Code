@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Kosher" default="full-build">
+    <property name="php" value="php"/>
+    <property name="phpcs" value="${basedir}/vendor/bin/phpcs"/>
+    <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
+    <property name="composer" value="${basedir}/composer.phar"/>
+    <property environment="env"/>
+
+    <target name="prepare"
+            unless="prepare.done"
+            depends="clean"
+            description="Prepare for build">
+        <mkdir dir="${basedir}/build"/>
+        <mkdir dir="${basedir}/build/api"/>
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/logs"/>
+        <mkdir dir="${basedir}/build/pdepend"/>
+        <mkdir dir="${basedir}/build/phpdox"/>
+        <property name="prepare.done" value="true"/>
+    </target>
+
+    <target name="clean"
+            unless="clean.done"
+            description="Clean build artifacts">
+        <delete dir="${basedir}/build"/>
+        <delete dir="${basedir}/build/api"/>
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/logs"/>
+        <delete dir="${basedir}/build/pdepend"/>
+        <delete dir="${basedir}/build/phpdox"/>
+        <property name="clean.done" value="true"/>
+    </target>
+
+    <target name="php-check"
+            description="Check if PHP property is present">
+        <condition property="php" value="php">
+            <not>
+                <isset property="${php}"/>
+            </not>
+        </condition>
+    </target>
+
+    <target name="composer-check"
+            description="Check if composer.phar is present">
+        <available file="${composer}" property="composer.present"/>
+    </target>
+
+    <target name="composer-download"
+            depends="composer-check"
+            unless="composer.present"
+            description="Download composer.phar if is not present">
+        <get src="https://getcomposer.org/composer.phar" dest="${composer}"/>
+        <property name="composer.noselfupdate" value="true"/>
+    </target>
+
+    <target name="composer-selfupdate"
+            depends="php-check,composer-download"
+            unless="composer.noselfupdate"
+            description="Composer self update">
+        <exec executable="${php}">
+            <arg value="${composer}"/>
+            <arg value="self-update"/>
+            <arg value="--quiet"/>
+        </exec>
+    </target>
+
+    <target name="composer"
+            depends="composer-selfupdate"
+            unless="composer.noupdate"
+            description="Execute composer update">
+        <exec executable="${php}">
+            <arg value="${composer}"/>
+            <arg value="update"/>
+        </exec>
+        <property name="composer.noupdate" value="true"/>
+    </target>
+
+    <target name="full-build"
+            depends="prepare,composer,static-analysis"
+            description="Perform project build"/>
+
+    <target name="full-build-parallel"
+            depends="prepare,composer,static-analysis-parallel"
+            description="Performs static analysis (executing the tools in parallel), runs the tests, and generates project documentation"/>
+
+    <target name="static-analysis"
+            depends="phpmd,phpcs"
+            description="Performs static analysis"/>
+
+    <target name="static-analysis-parallel"
+            description="Performs static analysis (executing the tools in parallel)">
+        <parallel threadCount="2">
+            <antcall target="phpmd-ci"/>
+            <antcall target="phpcs-ci"/>
+        </parallel>
+    </target>
+
+    <target name="phpmd"
+            depends="composer"
+            unless="phpmd.done"
+            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpmd}" taskname="phpmd" failonerror="false">
+            <arg path="${basedir}/app"/>
+            <arg value="text"/>
+            <arg path="${basedir}/vendor/bluefountainmedia/coding_standards/PHPMD/laravel_md_ruleset.xml"/>
+            <arg value="--exclude"/>
+            <arg path="*/resources/views/*"/>
+        </exec>
+        <property name="phpmd.done" value="true"/>
+    </target>
+
+    <target name="phpcs"
+            depends="composer"
+            unless="phpcs.done"
+            description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpcs}" taskname="phpcs" failonerror="false">
+            <arg value="--standard=${basedir}/vendor/bluefountainmedia/coding_standards/PHP_CodeSniffer/Standards/Laravel"/>
+            <arg value="--extensions=php,phtml"/>
+            <arg value="--ignore=*/resources/views/*,*/database/factories/*,*/database/migrations/*,*/database/seeds/*,*.json,.gitignore,*.xml,*.csv,*.html"/>
+        </exec>
+        <property name="phpcs.done" value="true"/>
+    </target>
+
+    <target name="phpmd-ci"
+            depends="composer"
+            unless="phpmd.done"
+            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpmd}" taskname="phpmd" failonerror="false">
+            <arg path="${basedir}/app"/>
+            <arg value="xml"/>
+            <arg path="${basedir}/vendor/bluefountainmedia/coding_standards/PHPMD/laravel_md_ruleset.xml"/>
+            <arg value="--reportfile"/>
+            <arg path="${basedir}/build/logs/pmd.xml"/>
+            <arg value="--exclude"/>
+            <arg path="*/resources/views/*"/>
+        </exec>
+    </target>
+
+    <target name="phpcs-ci"
+            depends="composer"
+            unless="phpcs.done"
+            description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpcs}" output="/dev/null" taskname="phpcs" failonerror="false">
+            <arg value="--report=checkstyle"/>
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml"/>
+            <arg value="--standard=${basedir}/vendor/bluefountainmedia/coding_standards/PHP_CodeSniffer/Standards/Laravel"/>
+            <arg value="--extensions=php,phtml"/>
+            <arg value="--ignore=*/resources/views/*,*/database/factories/*,*/database/migrations/*,*/database/seeds/*,*.json,.gitignore,*.xml,*.csv,*.html"/>
+        </exec>
+    </target>
+</project>

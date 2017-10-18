@@ -1,0 +1,267 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: flex-start;
+    &.is-centered {justify-content: center;}
+    & > li {
+        margin: 0 10px;
+        width: 100%;
+        display: flex;
+    }
+    &.with-related {
+        margin-right: -12px;
+        margin-left: -12px;
+        & > li {
+            margin-right: 12px;
+            margin-left: 12px;
+        }
+    }
+    &.with-articles {
+        margin-right: -12px;
+        margin-left: -12px;
+        & > li {
+            margin-right: 12px;
+            margin-left: 12px;
+        }
+    }
+    & > [class*='item'] {margin-bottom: 20px;}
+    & > [class*='item-related'] {margin-bottom: 24px;}
+    & > [class*='item-article'] {margin-bottom: 22px;}
+    & > [class*='item-chef'] {margin-bottom: 22px;}
+
+    // DESKTOP GRID ITEMS
+    @include bp-min($mq-desktop-min) {
+        & > li {width: calc(25% - 20px);}
+        & > [class*='item-related'] {width: calc(50% - 24px);}
+        & > [class*='item-article'] {width: calc(100% - 20px);}
+        .listing &,
+        .profile-listing & {
+            & > li.item-recipe {width: calc(33.33% - 20px);}
+            & > [class*='item-article'] {width: calc(100% - 20px);}
+            & > [class*='item-chef'] {width: calc(100% - 20px);}
+        }
+        .listing__container:first-child & {
+            & > li.item-recipe {width: calc(25% - 20px);}
+        }
+    }
+
+    // TABLET GRID ITEMS
+    @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+        & > li {width: calc(33.33% - 20px);}
+        & > [class*='item-article'] {width: calc(100% - 20px);}
+        & > [class*='item-chef'] {width: calc(100% - 20px);}
+    }
+
+    @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+        & > [class*='item-related'] {width: calc(50% - 24px);}
+        & > [class*='item-article'] {width: calc(100% - 20px);}
+        & > [class*='item-chef'] {width: calc(100% - 20px);}
+    }
+    @include bp-range($mq-mobile-small, $mq-tablet-min) {
+        & > [class*='item-related'] {width: 100%;}
+    }
+
+    // MOBILE GRID ITEMS
+    @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+        & > li {width: calc(50% - 20px);}
+        & > [class*='item-article'] {width: calc(100% - 20px);}
+        & > [class*='item-chef'] {width: calc(100% - 20px);}
+    }
+
+    // MIN GRID ITEMS
+    @include bp-max($mq-mobile-small) {
+        margin-right: 0;
+        margin-left: 0;
+        & > li {
+            width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+
+    &.grid-row4_5 {
+        & > li {
+            width: calc(20% - 20px);
+            // TABLET GRID ITEMS
+            @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                width: calc(25% - 20px);
+            }
+            // MOBILE GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                width: calc(33.33% - 20px);
+            }
+            // MIN GRID ITEMS
+            @include bp-max($mq-mobile-small) {
+                width: 100%;
+                margin-right: 0;
+                margin-left: 0;
+            }
+            .item-recipe {
+                &__title {
+                    font-size: 16px;
+                    line-height: 20px;
+                    // MIN GRID ITEMS
+                    @include bp-max($mq-mobile-small) {
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+        & > li:nth-child(1),
+        & > li:nth-child(2),
+        & > li:nth-child(3),
+        & > li:nth-child(4) {
+            width: calc(25% - 20px);
+            // TABLET GRID ITEMS
+            @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                width: calc(33.33% - 20px);
+            }
+            // MOBILE GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                width: calc(50% - 20px);
+            }
+            // MIN GRID ITEMS
+            @include bp-max($mq-mobile-small) {
+                width: 100%;
+            }
+            .item-recipe {
+                &__title {
+                    font-size: 20px;
+                    line-height: 24px;
+                }
+            }
+        }
+        & > li:nth-child(5),
+        & > li:nth-child(6) {
+            // TABLET GRID ITEMS
+            @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                width: calc(33.33% - 20px);
+            }
+            // MOBILE GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                width: calc(33.33% - 20px);
+            }
+            // MIN GRID ITEMS
+            @include bp-max($mq-mobile-small) {
+                width: 100%;
+            }
+            .item-recipe {
+                &__title {
+                    font-size: 16px;
+                    line-height: 20px;
+                    // TABLET GRID ITEMS
+                    @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                    // MOBILE GRID ITEMS
+                    @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                    // MIN GRID ITEMS
+                    @include bp-max($mq-mobile-small) {
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+        & > li:nth-child(14) {
+            // TABLET GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                display: none;
+            }
+        }
+        & > li:nth-child(9),
+        & > li:nth-child(10),
+        & > li:nth-child(11),
+        & > li:nth-child(12),
+        & > li:nth-child(13),
+        & > li:nth-child(14) {
+            @include bp-max($mq-mobile-small){
+                display: none;
+            }
+        }
+    }
+
+    &.grid-row2_4 {
+        & > li {
+            width: calc(25% - 20px);
+            // TABLET GRID ITEMS
+            @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                width: calc(33.33% - 20px);
+            }
+            // MOBILE GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min) {
+                width: calc(50% - 20px);
+            }
+            // MIN GRID ITEMS
+            @include bp-max($mq-mobile-small) {
+                width: 100%;
+            }
+            .item-recipe {
+                &__title {
+                    font-size: 20px;
+                    line-height: 24px;
+                }
+            }
+        }
+        & > li:nth-child(1),
+        & > li:nth-child(2) {
+            width: calc(50% - 20px);
+            // TABLET & MOBILE GRID ITEMS
+            @include bp-max($mq-tablet-min) {
+                width: calc(100% - 20px);
+            }
+            @include bp-max($mq-mobile-small) {
+                width: 100%;
+            }
+            .item-recipe {
+                &__title {
+                    font-size: 30px;
+                    line-height: 34px;
+                    // MIN GRID ITEMS
+                    @include bp-max($mq-mobile-small) {
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                }
+                &__status {
+                    font-size: 24px;
+                    line-height: 56px;
+                    margin-top: -56px;
+                    @include bp-max($mq-mobile-small) {
+                        font-size: 20px;
+                        line-height: 46px;
+                        margin-top: -46px;
+                    }
+                    &:before {
+                        height: 56px * 2;
+                        @include bp-max($mq-mobile-small) {
+                            height: 46px * 2;
+                        }
+                    }
+                }
+            }
+        }
+        & > li:nth-child(6) {
+            // TABLET & MOBILE GRID ITEMS
+            @include bp-range($mq-tablet-min + 1px, $mq-tablet) {
+                display: none;
+            }
+        }
+        & > li:nth-child(2),
+        & > li:nth-child(5),
+        & > li:nth-child(6) {
+            // TABLET GRID ITEMS
+            @include bp-range($mq-mobile-small + 1px, $mq-tablet-min + 1px) {
+                display: none;
+            }
+        }
+    }
+}

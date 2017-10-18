@@ -1,0 +1,19 @@
+.section-related-articles {
+    background: $clr-grey1-light;
+    .spacer {
+        padding: _percentage(65) 0 _percentage(55);
+    }
+    .heading-decorative {
+        & + * {margin-top: _percentage(16);}
+    }
+    .separator {
+        & + * {margin-top: _percentage(37);}
+    }
+    .actions {
+        padding: 26px 0 17px;
+    }
+    .btn {
+        padding-right: 44px;
+        padding-left: 44px;
+    }
+}

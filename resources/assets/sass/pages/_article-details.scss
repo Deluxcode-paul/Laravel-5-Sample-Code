@@ -1,0 +1,278 @@
+.article {
+    background: $clr-grey1-light;
+    &__breadcrumb {
+        background: $clr-grey1;
+        color: $clr-text;
+    }
+    &__wrapper {
+        display: flex;
+        padding-bottom: 74px;
+        @include breakpoint($mq-tablet-medium) {
+            display: block;
+        }
+        .community-block {
+            padding-top: 60px;
+        }
+    }
+    &__content {
+        flex: 0 0 100%;
+        max-width: calc(100% - 354px);
+        @include breakpoint($mq-tablet-medium) {
+            max-width: 850px;
+            flex: 1 0 auto;
+            margin: 0 auto;
+        }
+    }
+    &__item {
+        .img {
+            display: block;
+            margin-bottom: 30px;
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            @include anim;
+            .video {
+                width: 85px;
+                height: 85px;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                border-radius: 50%;
+                background: rgba($clr-black, .62);
+                pointer-events: none;
+                @include anim;
+                svg.icon {
+                    width: calc(100% + 2px);
+                    height: calc(100% + 2px);
+                    position: absolute;
+                    fill: $clr-white;
+                    top: -1px;
+                    right: -1px;
+                    left: -1px;
+                    bottom: -1px;
+                }
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            .no-touchevents & {
+                &[href]:hover {opacity: .8;}
+            }
+        }
+        .header {
+            margin: -12px 0 30px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba($clr-text, .2);
+        }
+        .category {
+            font: 700 16px/20px $font-secondary;
+            text-transform: uppercase;
+            color: $clr-grey5;
+            .no-touchevents & {
+                &:hover {color: $clr-color1;}
+            }
+        }
+        .title {
+            font: 700 34px/38px $font-secondary;
+            color: $clr-text2;
+        }
+        .meta {
+            margin-top: 14px;
+            font-size: 16px;
+            line-height: 26px;
+            color: $clr-text;
+            span {
+                display: inline-block;
+                margin-right: 5px;
+            }
+            a {
+                display: inline-block;
+                margin-left: 5px;
+                color: inherit;
+                font-style: italic;
+                .no-touchevents & {
+                    &:hover {color: $clr-color1;}
+                }
+            }
+        }
+        .content {
+            margin-bottom: 74px;
+            p {
+                font-size: 20px;
+                line-height: 34px;
+                color: $clr-text2;
+                @include breakpoint($mq-tablet-medium) {
+                    font-size: 18px;
+                    line-height: 26px;
+                }
+                span {
+                    font-size: inherit !important;
+                    font-family: inherit !important;
+                }
+            }
+            a {
+                text-decoration: underline;
+                &:hover {text-decoration: none;}
+            }
+            ol {
+                counter-reset: list;
+                margin-top: 10px;
+                font-size: 20px;
+                line-height: 34px;
+                @include breakpoint($mq-tablet-medium) {
+                    font-size: 18px;
+                    line-height: 26px;
+                }
+                li {
+                    counter-increment: list;
+                    position: relative;
+                    padding-left: 70px;
+                    @include breakpoint($mq-mobile-medium) {
+                        padding-left: 44px;
+                        margin-bottom: 20px;
+                    }
+                    & + li {
+                        margin-top: 30px;
+                        @include breakpoint($mq-mobile-medium) {
+                            margin-top: 0;
+                        }
+                    }
+                    &:before {
+                        content: counter(list);
+                        position: absolute;
+                        left: 0;
+                        top: 15px;
+                        margin-top: -25px;
+                        text-align: center;
+                        color: $clr-purple;
+                        min-width: 50px;
+                        height: 50px;
+                        font-size: 29px;
+                        font-weight: 600;
+                        line-height: 45px;
+                        border-radius: 50%;
+                        border: 2px solid $clr-purple;
+                        @include breakpoint($mq-mobile-medium) {
+                            top: 18px;
+                            width: 34px;
+                            min-width: 34px;
+                            height: 34px;
+                            line-height: 28px;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            ul {
+                font-size: 20px;
+                line-height: 34px;
+                @include breakpoint($mq-tablet-medium) {
+                    font-size: 18px;
+                    line-height: 26px;
+                }
+                li {
+                    padding-left: 14px;
+                    position: relative;
+                    @include breakpoint($mq-tablet-min) {
+                        margin-bottom: 20px;
+                    }
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 16px;
+                        left: 0;
+                        display: block;
+                        width: 4px;
+                        height: 4px;
+                        background: $clr-color1;
+                        @include breakpoint($mq-tablet-min) {
+                            top: 10px;
+                        }
+                    }
+                }
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                &[style*="float: right"] {
+                    margin: 10px 0 10px 20px;
+                }
+                &[style*="float: left"] {
+                    margin: 10px 20px 10px 0;
+                }
+            }
+            iframe {
+                max-width: 100%;
+                height: calc(846px * .5625);
+                @include breakpoint($mq-desktop-min) {
+                    height: calc((100vw) * .5625);
+                }
+                @include breakpoint($mq-tablet-small) {
+                    height: 56.25vw;
+                }
+            }
+        }
+        .tags {
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba($clr-text, .2);
+            ul {
+                font-size: 0;
+                li {
+                    margin: 0 7px 7px 0;
+                    a {
+                        font-size: 14px;
+                        line-height: 34px;
+                        color: $clr-black;
+                        background: rgba($clr-text, .1);
+                        padding: 0 18px;
+                        position: relative;
+                        z-index: 1;
+                        &:before, &:after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: rgba($clr-text, .1);
+                            z-index: -1;
+                        }
+                        &:after {
+                            background: $clr-color1;
+                            transform: scale(0);
+                            opacity: 0;
+                            @include anim;
+                        }
+                        .no-touchevents & {
+                            &:hover {
+                                color: $clr-white;
+                                &:after {
+                                    transform: scale(1);
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__aside {
+        margin: 54px 0 0 34px;
+        flex: 0 0 320px;
+        @include breakpoint($mq-tablet-medium) {
+            flex: 1 0 auto;
+            max-width: 850px;
+            margin: 35px auto 0;
+        }
+    }
+    .actions {
+        padding: 8px 0 12px;
+    }
+
+}

@@ -1,0 +1,64 @@
+.chefs {
+    &__wrapper {
+        padding: 76px 0 120px;
+        background: $clr-grey1-light;
+    }
+    &__list {
+        margin-bottom: 48px;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            margin-bottom: 6px;
+            flex: 0 0 33%;
+            @include breakpoint($mq-tablet-medium) {
+                flex: 0 0 50%;
+            }
+            @include breakpoint($mq-mobile-medium) {
+                flex: 0 0 100%;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 70px;
+                    height: 70px;
+                    flex: 0 0 70px;
+                    border-radius: 50%;
+                    border: 3px solid $clr-white;
+                    overflow: hidden;
+                    margin-right: 25px;
+                    @include anim;
+                }
+                span {
+                    font-size: 22px;
+                    line-height: 26px;
+                    color: $clr-text2;
+                    @include anim;
+                }
+                .no-touchevents & {
+                    &:hover {
+                        img {border-color: $clr-color1;}
+                        span {color: $clr-color1;}
+                    }
+                }
+            }
+        }
+    }
+    &__content {
+        border-top: 1px solid rgba($clr-text, .2);
+        padding-top: 50px;
+        .title {
+            font-size: 30px;
+            line-height: 34px;
+            font-weight: 700;
+            color: $clr-text2;
+            margin-bottom: 10px;
+        }
+        .desc {
+            max-width: 830px;
+            font-size: 20px;
+            line-height: 34px;
+            color: $clr-text2;
+        }
+    }
+}

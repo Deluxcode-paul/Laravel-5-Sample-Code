@@ -1,0 +1,1 @@
+@include('user.profile.activity.blocks.inline_script')

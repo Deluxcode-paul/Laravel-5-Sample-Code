@@ -1,0 +1,174 @@
+.section-gallery {
+    padding-bottom: 30px;
+    & + * {border-top: 1px solid mix($clr-grey1, $clr-grey3);}
+    & > * + * {
+        margin-top: 13px;
+        @include breakpoint($mq-mobile-medium) {
+            margin-top: 10px;
+        }
+    }
+    .gallery-top {
+        .link-video {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            @include anim(background-color);
+            .video-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 128px;
+                height: 128px;
+                background-color: rgba($clr-black, .62);
+                border-radius: 50%;
+                @include anim(background-color);
+                @include breakpoint($mq-mobile-small) {
+                    width: 85px;
+                    height: 85px;
+                }
+                svg.icon {
+                    width: calc(100% + 2px);
+                    height: calc(100% + 2px);
+                    position: absolute;
+                    fill: $clr-white;
+                    top: -1px;
+                    right: -1px;
+                    left: -1px;
+                    bottom: -1px;
+                }
+            }
+            .no-touchevents & {
+                &:hover {
+                    background-color: rgba($clr-black, .3);
+                    .video-icon {background-color: $clr-black;}
+                }
+            }
+        }
+        .swiper-slide {background-color: rgba(darken($clr-purple, 20%), .9);}
+        &__img {
+            padding-top: percentage(698 / 926);
+            background-size: cover;
+            background-position: center top;
+            @include anim($param: opacity);
+            &.swiper-lazy {
+                opacity: 0;
+                &.swiper-lazy-loaded {opacity: 1;}
+            }
+        }
+    }
+    .gallery-thumbs {
+        position: relative;
+        padding-right: 25px;
+        padding-left: 25px;
+        text-align: center;
+        @include breakpoint($mq-mobile-medium) {
+            padding: 0;
+            margin-left: -15px;
+            margin-right: -15px;
+            width: 100vw;
+        }
+        .swiper-button-disabled {opacity: 0;}
+        .swiper-wrapper {
+            white-space: nowrap;
+            font: 0/0 a;
+            display: block;
+        }
+        .video-icon {
+            position: absolute;
+            width: 63px;
+            height: 63px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: rgba($clr-black, .62);
+            @include breakpoint($mq-mobile-small) {
+                width: 40px;
+                height: 40px;
+            }
+            @include anim(background-color);
+            svg.icon {
+                position: absolute;
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                fill: $clr-white;
+                top: -1px;
+                right: -1px;
+                left: -1px;
+                bottom: -1px;
+            }
+        }
+        .swiper-slide {
+            cursor: pointer;
+            display: inline-block;
+            @include breakpoint($mq-mobile-medium) {
+                width: calc((100% - 50px)/3) !important;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba($clr-white, .4);
+                border: 3px solid $clr-brown;
+                opacity: 0;
+                @include anim;
+                @include anim-param(opacity, border-width);
+            }
+            img{
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+            }
+            .no-touchevents & {
+                &:hover {
+                    &:after {
+                        opacity: 1;
+                        border-width: 5px;
+                    }
+                    .video-icon {background: $clr-black;}
+                }
+            }
+            &.is-current {
+                &:after {
+                    opacity: 1;
+                    border-width: 5px;
+                }
+            }
+        }
+        .swiper-button {
+            &-next,
+            &-prev {
+                padding: 0;
+                height: 100%;
+                width: 25px;
+                background: transparent;
+                color: $clr-black;
+                @include breakpoint($mq-mobile-medium) {
+                    display: none;
+                }
+                &:before,
+                &:after {
+                    width: 16px;
+                    height: 2px;
+                    padding: 0 7px;
+                }
+                &:before {margin-top: -6px;}
+                &:after {margin-top: 5px;}
+            }
+            &-prev {
+                &:before,
+                &:after {left: -1px;}
+            }
+            &-next {
+                &:before,
+                &:after {right: -2px;}
+            }
+        }
+    }
+}

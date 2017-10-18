@@ -1,0 +1,23 @@
+.page-heading {
+    background-color: $clr-text;
+    background-size: cover;
+    background-position: center center;
+    color: $clr-grey1-light;
+    @include fence($position: 'bottom', $direction: 'inside', $element: 'after');
+    &__spacer {
+        padding: _percentage(57) 0 _percentage(56);
+    }
+    &__descr {
+        text-align: center;
+        font-size: 18px;
+        line-height: 26px;
+        p {margin: 0;}
+        p + p {margin-top: .5em;}
+    }
+    .breadcrumb + &__spacer {
+        margin-top: -46px;
+        @include breakpoint($mq-mobile-medium) {
+            margin-top: 0;
+        }
+    }
+}

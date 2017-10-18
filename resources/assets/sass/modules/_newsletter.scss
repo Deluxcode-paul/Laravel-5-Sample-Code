@@ -1,0 +1,98 @@
+.section-newsletter {
+    color: $clr-grey1-light;
+    position: relative;
+    text-align: center;
+    background: #101010;
+    background-size: cover;
+    background-position: center center;
+    @include fence($position: 'top', $direction: 'inside', $element: 'after');
+    z-index: 0;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: $clr-black;
+        opacity: .5;
+    }
+    &:after {z-index: 1;}
+    & > * {position: relative;}
+    &__spacer {
+        padding: _percentage(73) 0 _percentage(92);
+        @include breakpoint($mq-tablet-medium) {
+            padding: 76px 0 116px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding: 32px 0 44px;
+        }
+    }
+    &__container {
+        max-width: 510px;
+        margin: 0 auto;
+    }
+    .heading-decorative {
+        & + * {margin-top: 4px;}
+    }
+    .descr {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0;
+        font-weight: 600;
+        p {margin: 0;}
+        p + p {margin-top: .5em;}
+        & + * {margin-top: 20px;}
+    }
+}
+.form-newsletter {
+    position: relative;
+    .btn-submit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 64px;
+        background: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-align: center;
+        font: 0/0 a;
+        @include anim(background);
+        @include breakpoint($mq-tablet-medium) {
+            padding-right: 10px;
+            width: 52px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding-right: 0;
+        }
+        svg.icon {
+            width: 50%;
+            fill: $clr-purple;
+            @include anim(fill);
+        }
+        .no-touchevents & {
+            &:hover {background: $clr-grey1;}
+            &:active {background: darken($clr-grey1, 5%);}
+        }
+    }
+    .form-input {
+        input {
+            padding: 24px 62px 24px 22px;
+            font-size: 18px;
+            border: 1px solid #d6d6d6;
+            background: $clr-grey1-light;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 16px;
+                padding: 15px 62px 15px 15px;
+            }
+        }
+    }
+    .error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+}

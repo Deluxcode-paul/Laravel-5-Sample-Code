@@ -1,0 +1,228 @@
+.article,
+.community-lp {
+    .aside {
+        padding: 22px;
+        background: $clr-white;
+        border: 1px solid rgba($clr-text, .2);
+        @include breakpoint($mq-tablet-medium){
+            padding: 18px;
+        }
+        .title {
+            font: 700 20px/26px $font-secondary;
+            margin-bottom: 10px;
+            color: $clr-text;
+        }
+        &__section {
+            & + .aside__section{
+                margin-top: 18px;
+                padding-top: 18px;
+                border-top: 1px solid rgba($clr-text, .2);
+            }
+        }
+    }
+}
+.popular {
+    font-size: 0;
+    margin-top: -14px;
+    &__item {
+        display: block;
+        border-bottom: 1px solid rgba($clr-text, .2);
+        font-size: 14px;
+        line-height: 18px;
+        position: relative;
+        @include anim;
+        @include breakpoint($mq-mobile) {
+            width: calc(50% - 14px);
+            display: inline-block;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            width: 100%;
+        }
+        &:last-child {
+            border-bottom: 0;
+            @include breakpoint($mq-mobile) {
+                border-bottom: 1px solid rgba($clr-text, .2);
+            }
+            @include breakpoint($mq-mobile-medium) {
+                border-bottom: 0;
+            }
+        }
+        &:nth-child(even) {
+            @include breakpoint($mq-mobile) {
+                margin-left: 28px;
+            }
+            @include breakpoint($mq-mobile-medium) {
+                margin-left: 0;
+            }
+        }
+        .wrap {
+            position: relative;
+            z-index: 1;
+            color: $clr-text;
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            @include anim;
+        }
+        .img {
+            margin-right: 20px;
+            flex: 0 0 46px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid $clr-color2;
+            @include anim;
+            .no-touchevents & {
+                &:hover {
+                    border-color: $clr-color1;
+                }
+            }
+            img {
+                max-height: 100%;
+                height: auto;
+            }
+        }
+        .desc {
+            a {
+                font-weight: 600;
+                color: $clr-text2;
+                .no-touchevents & {
+                    &:hover {
+                        color: $clr-color1;
+                    }
+                }
+            }
+        }
+    }
+}
+.popular-tags {
+    font-size: 0;
+    li {
+        display: inline-block;
+        margin: 0 7px 7px 0;
+        a {
+            display: block;
+            font-size: 14px;
+            line-height: 34px;
+            color: $clr-black;
+            background: rgba($clr-text, .1);
+            padding: 0 18px;
+            position: relative;
+            z-index: 1;
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba($clr-text, .1);
+                z-index: -1;
+            }
+            &:after {
+                background: $clr-color1;
+                transform: scale(0);
+                opacity: 0;
+                @include anim;
+            }
+            .no-touchevents & {
+                &:hover {
+                    color: $clr-white;
+                    &:after {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+.related-articles {
+    font-size: 0;
+    &__item {
+        display: block;
+        border-bottom: 1px solid rgba($clr-text, .2);
+        font-size: 16px;
+        line-height: 18px;
+        position: relative;
+        @include anim;
+        @include breakpoint($mq-tablet-medium) {
+            width: calc(50% - 14px);
+            display: inline-block;
+        }
+        @include breakpoint($mq-tablet-min) {
+            width: 100%;
+        }
+        &:last-child {
+            border-color: transparent;
+            @include breakpoint($mq-tablet-medium) {
+                border-color: rgba($clr-text, .2);
+            }
+            @include breakpoint($mq-tablet-min) {
+                border-color: transparent;
+            }
+        }
+        &:nth-child(even) {
+            @include breakpoint($mq-tablet-medium) {
+                margin-left: 28px;
+            }
+            @include breakpoint($mq-tablet-min) {
+                margin-left: 0;
+            }
+        }
+        .desc {
+            position: relative;
+            z-index: 1;
+            color: $clr-text;
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            @include anim;
+            h3 {
+                font-weight: 600;
+            }
+        }
+        .img {
+            margin-right: 20px;
+            position: relative;
+            flex: 0 0 75px;
+            .video {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                border-radius: 50%;
+                background: rgba($clr-black, .62);
+                pointer-events: none;
+                @include anim;
+                svg.icon {
+                    width: calc(100% + 2px);
+                    height: calc(100% + 2px);
+                    position: absolute;
+                    fill: $clr-white;
+                    top: -1px;
+                    right: -1px;
+                    left: -1px;
+                    bottom: -1px;
+                }
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        .no-touchevents & {
+            &:hover {
+                border-color: rgba($clr-text, .2);
+                box-shadow: 0 -5px 0 rgba($clr-text, .2) inset;
+                .desc {transform: scale(.88);}
+            }
+        }
+    }
+}

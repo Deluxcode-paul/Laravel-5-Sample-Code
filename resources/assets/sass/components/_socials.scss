@@ -1,0 +1,29 @@
+.socials {
+    font: 0/0 a;
+    text-align: center;
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        width: 47px;
+        & + li {margin-left: 7px;}
+    }
+    a {
+        display: block;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        padding-top: 100%;
+    }
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        fill: $clr-grey2;
+        @include anim($param: fill);
+    }
+    .no-touchevents & {
+        a:hover svg {fill: $clr-purple;}
+    }
+}

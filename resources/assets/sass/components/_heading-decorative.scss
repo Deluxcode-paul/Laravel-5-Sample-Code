@@ -1,0 +1,53 @@
+.heading-decorative {
+    text-align: center;
+    color: currentColor;
+    @include breakpoint($mq-mobile-medium) {
+        padding: 10px 0;
+    }
+    &__title {
+        margin: 0;
+        font-family: $font-decorative;
+        font-size: 44px;
+        line-height: 1em;
+        position: relative;
+        @include breakpoint($mq-mobile-medium) {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        span {
+            display: inline-block;
+            position: relative;
+            padding: 0 87px;
+            @include breakpoint($mq-mobile-medium) {
+                padding: 0 67px;
+            }
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                margin-top: 3px;
+                width: 60px;
+                border-top: 1px solid currentColor;
+                opacity: .85;
+            }
+            &:before {
+                right: 0;
+            }
+            &:after {
+                left: 0;
+            }
+        }
+    }
+    &__subtitle {
+        font-family: $font-secondary;
+        margin: 0;
+        font-weight: bold;
+        font-size: 63px;
+        line-height: 65px;
+        @include breakpoint($mq-mobile-medium) {
+            font-size: 36px;
+            line-height: 30px;
+        }
+    }
+}

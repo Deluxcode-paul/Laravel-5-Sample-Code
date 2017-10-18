@@ -1,0 +1,141 @@
+@mixin loader-rotate {
+    @keyframes loader-rotate {
+        0% {transform: rotate(0);}
+        100% {transform: rotate(360deg);}
+    }
+}
+
+@mixin loader-scale {
+    @keyframes loader-scale {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {opacity: 1;}
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+}
+
+$loader-color: $clr-purple;
+$loader-size: 56px;
+$loader-border-size: 8px;
+$loader-gap: 12px;
+$loader-animation-duration: 1s;
+
+@mixin loader(
+    $size: $loader-size,
+    $color: $loader-color,
+    $duration: $loader-animation-duration,
+    $gap: $loader-gap,
+    $align: null
+) {
+    width: $size;
+    height: $size;
+    position: relative;
+    animation: loader $duration ease infinite;
+    @if ($align == center) {
+        margin: 0 auto;
+    }
+    @if ($align == middle) {
+        top: 50%;
+        margin: -($size * 2 + $gap) auto 0;
+    }
+    @keyframes loader {
+        0%, 100% {
+            box-shadow: // top left
+                        -($size / 2 + $gap / 2) $size 0 $color,
+                        // top right
+                        ($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // bottom right
+                        ($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2),
+                        // bottom left
+                        -($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2);
+        }
+        25% {
+            box-shadow: // top left
+                        -($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // top right
+                        ($size / 2 + $gap / 2) $size 0 $color,
+                        // bottom right
+                        ($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2),
+                        // bottom left
+                        -($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2);
+        }
+        50% {
+            box-shadow: // top left
+                        -($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // top right
+                        ($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // bottom right
+                        ($size / 2 + $gap / 2) (($size * 2) + $gap) 0 $color,
+                        // bottom left
+                        -($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2);
+        }
+        75% {
+            box-shadow: // top left
+                        -($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // top right
+                        ($size / 2 + $gap / 2) $size 0 rgba($color, 0.2),
+                        // bottom right
+                        ($size / 2 + $gap / 2) (($size * 2) + $gap) 0 rgba($color, 0.2),
+                        // bottom left
+                        -($size / 2 + $gap / 2) (($size * 2) + $gap) 0 $color;
+        }
+    }
+}
+
+.preloader {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba($clr-white, .85);
+    opacity: 0;
+    right: 100%;
+    @include anim($param: opacity);
+    text-align: center;
+    overflow: hidden;
+    &__icon {
+        @include loader;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        margin-top: -($loader-size + ($loader-size / 2) + ($loader-gap / 2));
+    }
+    .with-black-overlay & {
+        background: rgba($clr-black, .85);
+    }
+}
+
+body.is-loading,
+.ajax-section.is-loading {
+    .preloader {
+        right: 0;
+        opacity: 1;
+    }
+}
+.ajax-section {
+    .preloader {
+        position: absolute;
+    }
+}
+
+.ajax-section {
+    position: relative;
+    .preloader {
+        z-index: 999;
+    }
+    &.with-transparency {
+        & > *:not(.preloader) {
+            opacity: 1;
+            @include anim(opacity);
+        }
+        .preloader {background: none;}
+        &.is-loading > *:not(.preloader) {opacity: .25;}
+    }
+}

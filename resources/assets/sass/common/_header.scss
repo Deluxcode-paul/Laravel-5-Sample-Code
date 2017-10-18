@@ -1,0 +1,156 @@
+.site-header {
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $clr-grey1-light;
+    @include breakpoint($mq-desktop-min) {
+        border-bottom: 1px solid rgba($clr-text, .2);
+    }
+    .btn {font-weight: bold;}
+    .site-width {height: 100%;}
+    .container {
+        position: relative;
+        display: flex;
+        height: 100%;
+        padding: 20px 0 20px 300px;
+        @include anim($param: padding, $type: linear, $dur: .05s);
+        @include breakpoint($mq-tablet-medium) {
+            padding: 4px 0 4px 200px;
+            margin-left: -20px;
+        }
+        @include breakpoint($mq-mobile) {
+            display: flex;
+            justify-content: flex-end;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            margin-left: -15px;
+        }
+    }
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        margin: 0;
+        @include breakpoint($mq-tablet-medium) {
+            width: 200px;
+        }
+        a {
+            padding: 0 percentage(32 / 300);
+            display: block;
+            height: 100%;
+            font: 0/0 a;
+            color: $clr-white;
+            background: $clr-purple;
+            transition: none;
+            &:before {
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                height: 100%;
+            }
+        }
+        .logo-fixed {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            z-index: 2000;
+            @include anim();
+            @include anim-param(opacity, transform);
+        }
+        svg.icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            fill: $clr-white;
+            color: #bbbdbf;
+            @include anim;
+            @include anim-param(fill, color);
+            &-logo-min,
+            &-logo-min-bg {
+                display: none;
+                height: 100%;
+            }
+        }
+        .no-touchevents & {
+            a:hover {
+                svg {color: $clr-white;}
+            }
+        }
+    }
+    .main-nav {
+        width: 100%;
+        flex-basis: 100%;
+        @include breakpoint($mq-mobile) {
+            width: auto;
+            flex: 0 0 auto;
+        }
+    }
+    &.is-fixed {
+        position: fixed;
+        border-bottom: 1px solid mix($clr-grey1, $clr-grey2);
+        @include bp-min($mq-desktop-min) {
+            .container {
+                @include anim($param: padding, $type: linear);
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .logo {
+                width: 101px + 10px;
+                height: 101px + 10px;
+                bottom: auto;
+                top: 3px;
+                left: -5px;
+                a {
+                    transition: none;
+                    background: transparent;
+                    padding: 0;
+                }
+                .logo-fixed {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                svg.icon {
+                    fill: $clr-purple;
+                    &-logo {display: none;}
+                    &-logo-min-bg {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        display: inline-block;
+                        fill: $clr-grey1-light;
+                    }
+                    &-logo-min {
+                        position: absolute;
+                        top: 5px;
+                        left: 5px;
+                        right: 5px;
+                        bottom: 5px;
+                        display: inline-block;
+                        fill: $clr-purple;
+                        width: 101px;
+                        height: 101px;
+                    }
+                }
+                .no-touchevents & {
+                    a:hover {
+                        svg.icon {
+                            &-logo-min-bg {
+                                fill: $clr-grey1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

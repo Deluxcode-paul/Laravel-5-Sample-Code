@@ -1,0 +1,105 @@
+.item-related {
+    background: $clr-white;
+    border: 1px solid #e1e1e1;
+    padding: 22px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    max-width: 590px;
+    display: flex;
+    @include breakpoint($mq-tablet-medium) {
+        display: block !important;
+        max-width: 100%;
+    }
+    &__visual {
+        width: 166px;
+        height: 153px;
+        flex-shrink: 0;
+        overflow: hidden;
+        background: $clr-grey3;
+        position: relative;
+        @include anim;
+        @include breakpoint($mq-tablet-medium) {
+            margin-right: 20px;
+            float: left;
+        }
+        @include breakpoint($mq-mobile-small) {
+            margin-right: 0;
+            margin-bottom: 20px;
+            float: none;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        &:before {
+            content: '';
+            display: block;
+            padding-top: percentage(153 / 166);
+            float: left;
+        }
+        .no-touchevents & {
+            &:hover {opacity: .8;}
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .video {
+            width: 85px;
+            height: 85px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            border-radius: 50%;
+            background: rgba($clr-black, .62);
+            pointer-events: none;
+            @include anim;
+            svg.icon {
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                position: absolute;
+                fill: $clr-white;
+                top: -1px;
+                right: -1px;
+                left: -1px;
+                bottom: -1px;
+            }
+        }
+    }
+    &__info {
+        padding-left: 32px;
+        @include breakpoint($mq-tablet-medium) {
+            padding-left: 0;
+        }
+    }
+    &__category {
+        color: #8b8d90;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: bold;
+        margin-top: -5px;
+        & + * {margin-top: 4px;}
+        @include bp-min($mq-desktop-min){
+            &:hover {text-decoration: underline;}
+        }
+    }
+    &__title {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        & + * {margin-top: 16px;}
+        a {
+            color: currentColor;
+            @include bp-min($mq-desktop-min){
+                &:hover {color: $clr-purple;}
+            }
+        }
+    }
+}

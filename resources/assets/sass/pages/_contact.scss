@@ -1,0 +1,113 @@
+.contact {
+    background: $clr-grey1-light;
+    &__navigation {
+        display: flex;
+        justify-content: center;
+        margin-top: 4.5%;
+        margin-bottom: 20px;
+        .item {
+            flex: 0 0 250px;
+            max-width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            & + .item {
+                border-left: 1px solid rgba($clr-white, .2);
+            }
+        }
+    }
+    &__link {
+        .icon {
+            display: block;
+            margin: 0 auto 10px;
+            height: 72px;
+            @include breakpoint($mq-mobile-medium) {
+                height: 52px;
+            }
+            .is-brown {
+                fill: $clr-color2;
+            }
+            .is-white {
+                fill: $clr-white;
+            }
+            &-faq {
+                width: 74px;
+                @include breakpoint($mq-mobile-medium) {
+                    width: 58px;
+                }
+            }
+            &-forum {
+                width: 84px;
+                @include breakpoint($mq-mobile-medium) {
+                    width: 66px;
+                }
+            }
+        }
+        span {
+            display: block;
+            font-size: 20px;
+            line-height: 24px;
+            color: $clr-white;
+            font-weight: 700;
+            @include anim;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 16px;
+                line-height: 18px;
+            }
+            i {
+                white-space: nowrap;
+                color: $clr-color2;
+                font-style: normal;
+                @include anim;
+            }
+        }
+        .no-touchevents & {
+            &:hover {
+                .icon {
+                    .is-brown {fill: $clr-white;}
+                    .is-white {fill: $clr-color2;}
+                }
+                span {
+                    color: $clr-color2;
+                    i {color: $clr-white;}
+                }
+            }
+        }
+    }
+    &__wrapper {
+        padding: 76px 0;
+        @include breakpoint($mq-mobile-medium) {
+            padding: 46px 0;
+        }
+    }
+    &__form {
+        max-width: 725px;
+        padding: 70px 96px;
+        margin: 0 auto;
+        background: $clr-white;
+        border: 1px solid rgba($clr-text, .2);
+        @include breakpoint($mq-mobile-medium) {
+            padding: 40px 20px;
+        }
+        .separator {
+            margin-top: 30px;
+        }
+        .form-contact {
+            .form-input {
+                &.is-select {
+                    max-width: 332px;
+                }
+                textarea {
+                    height: 166px;
+                    min-height: 166px;
+                }
+            }
+            .btn {
+                width: 332px;
+                max-width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}

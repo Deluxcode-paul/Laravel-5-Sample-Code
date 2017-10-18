@@ -1,0 +1,39 @@
+.pagination {
+    font-size: 0;
+    li {
+        display: inline-block;
+        margin: 0 6px 6px 0;
+        border: 1px solid rgba($clr-text, .2);
+        background: $clr-white;
+        color: $clr-grey3;
+        @include anim;
+        @include breakpoint($mq-mobile-medium) {
+            display: none;
+            &:first-child,
+            &:last-child,
+            &.active {
+                display: inline-block;
+            }
+        }
+        a, span {
+            font-size: 20px;
+            line-height: 24px;
+            padding: 6px 13px;
+            font-weight: 700;
+            display: block;
+            color: inherit;
+            @include anim;
+        }
+        &.disabled {opacity: .5;}
+        &.active {
+            background: $clr-color1;
+            color: $clr-white;
+        }
+        .no-touchevents & {
+            &:not(.disabled):hover {
+                background: $clr-color1;
+                color: $clr-white;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+.item-chef {
+    background: $clr-white;
+    border: 1px solid #e1e1e1;
+    padding: 22px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    display: flex;
+    @include breakpoint($mq-desktop-medium) {
+        display: block !important;
+        max-width: 100%;
+    }
+    &__visual {
+        width: 238px;
+        height: auto;
+        flex-shrink: 0;
+        overflow: hidden;
+        background: $clr-grey3;
+        align-self: flex-start;
+        position: relative;
+        @include breakpoint($mq-desktop-medium) {
+            margin-right: 20px;
+            float: left;
+        }
+        @include breakpoint($mq-mobile-small) {
+            margin-right: 0;
+            margin-bottom: 20px;
+            float: none;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        &:before {
+            content: '';
+            float: left;
+            padding-top: percentage(180 / 238);
+        }
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__info {
+        padding-left: 38px;
+        @include breakpoint($mq-desktop-medium) {
+            padding-left: 0;
+        }
+    }
+    &__title {
+        font-size: 30px;
+        line-height: 34px;
+        font-weight: 600;
+        margin-top: 8px;
+        a {color: $clr-text;}
+        .no-touchevents & {
+            a:hover {color: $clr-purple;}
+        }
+        & + * {margin-top: 0;}
+    }
+    &__meta {
+        font-size: 16px;
+        line-height: 26px;
+        display: flex;
+        & + * {margin-top: 11px;}
+        li {
+            white-space: nowrap;
+            & + li:before {
+                content: '|';
+                margin: 0 10px;
+            }
+        }
+    }
+    &__bio {
+        font-size: 16px;
+        line-height: 28px;
+        p {margin: 0;}
+        p + p {margin-top: .5em}
+    }
+}

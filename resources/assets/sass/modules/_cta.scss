@@ -1,0 +1,188 @@
+.section-cta {
+    position: relative;
+    background: $clr-grey1-light;
+    text-align: center;
+    .section-spacer {
+        padding: _percentage(72) 0;
+        @include breakpoint($mq-tablet-medium) {
+            padding: 76px 0;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding: 36px 0;
+        }
+    }
+    ul {
+        display: flex;
+        margin: 0 -11px;
+        justify-content: center;
+        @include breakpoint($mq-mobile) {
+            margin: 0;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    li {
+        width: 100%;
+        max-width: 33.33%;
+        padding: 0 11px;
+        @include breakpoint($mq-tablet-medium) {
+            padding: 0 5px;
+        }
+        @include breakpoint($mq-mobile) {
+            max-width: 385px;
+            padding: 6px 0;
+        }
+        .item-spacer {
+            padding-top: percentage(390 / 385);
+            position: relative;
+        }
+    }
+    & + * {
+        position: relative;
+        @include fence($color: $clr-grey1-light, $position: 'top', $direction: 'inside', $element: 'after');
+    }
+}
+.item-cta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center top;
+    color: $clr-white;
+    a {color: currentColor;}
+    &__holder {
+        background: rgba($clr-black, .2);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    &__wrapper {
+        overflow: hidden;
+        position: absolute;
+        $vertical: percentage(42 / 385);
+        $horizontal: percentage(33 / 385);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: $vertical $horizontal;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        @include anim($dur: .3s);
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 0;
+            opacity: 0;
+            background: rgba($clr-purple, .82);
+            $vertical: percentage(42 / 385);
+            $horizontal: percentage(33 / 385);
+            transform: scale(1.2);
+            top: $vertical;
+            bottom: $vertical;
+            left: $horizontal;
+            right: $horizontal;
+            @include anim($dur: .3s);
+            @include anim-param(opacity, transform);
+        }
+        & > * {
+            width: 100%;
+            position: relative;
+        }
+        &-dummy {
+            z-index: 10;
+            cursor: pointer;
+            &:before {
+                display: none;
+            }
+        }
+    }
+    &__title {
+        font-size: 44px;
+        line-height: 48px;
+        font-weight: bold;
+        padding: 0 5%;
+        @include letter-spacing(30);
+        @include breakpoint($mq-tablet) {
+            font-size: 32px;
+            line-height: 34px;
+        }
+        @include breakpoint($mq-tablet-medium) {
+            font-size: 28px;
+        }
+        @include breakpoint($mq-mobile) {
+            font-size: 32px;
+            line-height: 34px;
+        }
+    }
+    &__descr {
+        padding: 10px 5% 0;
+        font-size: 16px;
+        line-height: 28px;
+        color: $clr-grey1-light;
+        @include breakpoint($mq-tablet-medium) {
+            font-size: 13px;
+            line-height: 18px;
+            padding-top: 5px;
+        }
+        @include breakpoint($mq-mobile) {
+            font-size: 16px;
+            line-height: 28px;
+        }
+        p {margin: 0;}
+        p + p {margin-top: .5em;}
+    }
+    .btn {
+        pointer-events: none;
+        padding-right: 35px;
+        padding-left: 35px;
+        @include breakpoint($mq-tablet-medium) {
+            font-size: 12px;
+            padding: 2px 22px;
+        }
+        @include breakpoint($mq-mobile) {
+            font-size: 16px;
+            padding: 5px 35px;
+        }
+    }
+    &__hide {
+        max-height: 0;
+        opacity: 0;
+        @include anim($dur: .3s);
+        @include anim-param(max-height, opacity);
+        .row {
+            position: relative;
+            & + .row {
+                margin-top: 20px;
+                @include breakpoint($mq-tablet) {
+                    margin-top: 10px;
+                }
+                @include breakpoint($mq-tablet-medium) {
+                    margin-top: 0;
+                }
+                @include breakpoint($mq-mobile) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    &:hover &__wrapper {
+        &-dummy {
+            visibility: hidden;
+        }
+        &:before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    &:hover &__hide {
+        max-height: 200px;
+        opacity: 1;
+    }
+}

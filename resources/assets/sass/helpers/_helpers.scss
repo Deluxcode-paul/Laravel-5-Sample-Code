@@ -1,0 +1,10 @@
+@import "reset";
+@import "classes";
+@import "color-classes";
+
+// needed for Pixel On Pixel plugin (Firefox)
+#pixel-on-pixel-layout {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
+}

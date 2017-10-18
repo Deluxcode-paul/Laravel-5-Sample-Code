@@ -1,0 +1,311 @@
+.chef {
+    .page-heading {
+        &__spacer {
+            padding-bottom: _percentage(181);
+            @include breakpoint($mq-mobile-small) {
+                padding-bottom: 70px;
+            }
+        }
+    }
+    &__header {
+        display: flex;
+        background: $clr-grey1-light;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 46px;
+        @include breakpoint($mq-mobile-medium) {
+            padding-bottom: 40px;
+        }
+        .actions-nav {
+            @include breakpoint($mq-tablet-medium) {
+                margin-top: 46px;
+            }
+        }
+        .chef__about + .actions-nav {
+            @include breakpoint($mq-mobile-medium) {
+                margin-top: 40px;
+            }
+        }
+        .chef__social + .actions-nav {
+            @include breakpoint($mq-mobile-medium) {
+                margin-top: 6px;
+            }
+        }
+    }
+    &__photo {
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid $clr-white;
+        margin: -12% auto -8%;
+        display: block;
+        background: $clr-white;
+        @include breakpoint($mq-tablet-medium) {
+            width: 280px;
+            height: 280px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            width: 140px;
+            height: 140px;
+            margin: -60px auto -24px;
+        }
+    }
+    &__about {
+        padding: 112px 76px 76px;
+        max-width: 920px;
+        width: calc(100% - 80px);
+        margin: 0 auto;
+        border: 1px solid rgba($clr-text, .2);
+        background: $clr-white;
+        @include breakpoint($mq-tablet-medium) {
+            width: 100%;
+            padding: 92px 40px 58px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding: 40px 20px 58px;
+        }
+        .desc {
+            position: relative;
+            margin-top: 40px;
+            font-size: 16px;
+            line-height: 26px;
+            color: $clr-text2;
+            overflow: hidden;
+            max-height: 105px;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 14px;
+            }
+            @include anim;
+            &.open {
+                max-height: 1000px;
+            }
+            &.more {
+                .link {
+                    display: block;
+                }
+            }
+            &.open.more {
+                .link {
+                    display: none;
+                }
+            }
+            .link {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: $clr-white;
+                border: 0;
+                color: $clr-color1;
+                text-decoration: none;
+                font-size: 16px;
+                line-height: 28px;
+                font-weight: 600;
+                display: none;
+                overflow: visible;
+                @include anim;
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 14px;
+                }
+                &:before {
+                    position: absolute;
+                    right: 100%;
+                    width: 20px;
+                    top: 0;
+                    bottom: 2px;
+                    background: $clr-white;
+                    color: $clr-text2;
+                    font-weight: 400;
+                    text-align: left;
+                    content: '...';
+                    pointer-events: none;
+                    text-decoration: none;
+                }
+                &:after {
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    bottom: 3px;
+                    height: 1px;
+                    background: $clr-color1;
+                    content: '';
+                    @include anim;
+                }
+                .no-touchevents & {
+                    &:hover {
+                        color: $clr-color2;
+                        &:after {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__top {
+        text-align: center;
+        padding-bottom: 26px;
+        .actions {
+            font-size: 0;
+            margin-bottom: 12px;
+            .btn {
+                margin: 0 3px 6px;
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 14px;
+                    min-width: 110px;
+                    padding: 7px 10px;
+                }
+            }
+        }
+        .info {
+            font-size: 18px;
+            line-height: 32px;
+            color: $clr-text;
+            margin-bottom: 6px;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 14px;
+                line-height: 26px;
+            }
+        }
+        .quote {
+            font-size: 18px;
+            line-height: 32px;
+            color: $clr-text;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 14px;
+                line-height: 26px;
+            }
+        }
+    }
+    &__social {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 0;
+        transform: translateY(-50%);
+        .link {
+            display: inline-block;
+            margin: 0 5px;
+            width: 47px;
+            height: 47px;
+            background: $clr-white;
+            border-radius: 50%;
+            @include breakpoint($mq-mobile-medium) {
+                width: 38px;
+                height: 38px;
+                margin: 0 3px;
+            }
+            .icon {
+                display: inline-block;
+                width: 47px;
+                height: 47px;
+                fill: $clr-color1;
+                @include anim;
+                @include breakpoint($mq-mobile-medium) {
+                    width: 38px;
+                    height: 38px;
+                }
+            }
+            .no-touchevents & {
+                &:hover {
+                    .icon {fill: $clr-color2;}
+                }
+            }
+        }
+    }
+    &__content {
+        background: $clr-grey1;
+        @include breakpoint($mq-tablet-min) {
+            padding-bottom: 40px;
+        }
+        .box-tabs .tabset {
+            justify-content: center;
+            li {
+                max-width: 25%;
+            }
+        }
+    }
+    &__bookmark {
+        padding: 60px 0 76px !important;
+        min-height: 0 !important;
+        @include breakpoint($mq-tablet-min) {
+            padding-bottom: 36px !important;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding: 40px 0 !important;
+        }
+        .actions {
+            margin: 25px 0 10px;
+            .btn {
+                min-width: 210px;
+            }
+        }
+        .notify {
+            font-size: 18px;
+            line-height: 32px;
+            font-style: italic;
+            color: $clr-text;
+        }
+    }
+    &__comments {
+        max-width: 896px;
+        margin: 0 auto;
+    }
+    &__subnav {
+        text-align: center;
+        border-bottom: 1px solid rgba($clr-text, .2);
+        margin: -30px 0 20px;
+        padding-bottom: 20px;
+        @include breakpoint($mq-mobile-medium) {
+            margin-top: -20px;
+        }
+        ul {
+            display: inline-flex;
+            border: 1px solid rgba($clr-text, .2);
+            @include breakpoint($mq-mobile-small) {
+                display: block;
+            }
+            li {
+                display: inline-block;
+                @include breakpoint($mq-mobile-small) {
+                    width: 100%;
+                }
+                a {
+                    display: block;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $clr-text;
+                    padding: 11px 16px;
+                    background: $clr-white;
+                    border-left: 1px solid rgba($clr-text, .2);
+                    @include breakpoint($mq-mobile-small) {
+                        border-top: 1px solid rgba($clr-text, .2);
+                        border-left: 0;
+                    }
+                    .no-touchevents & {
+                        &:hover {
+                            color: $clr-white;
+                            background: $clr-color2;
+                            border-color: $clr-color2;
+                        }
+                    }
+                }
+                &:nth-child(1) {
+                    a {
+                        border-left: 0;
+                        @include breakpoint($mq-mobile-small) {
+                            border-top: 0;
+                        }
+                    }
+                }
+                &.active {
+                    a {
+                        color: $clr-white;
+                        background: $clr-color2;
+                        border-color: $clr-color2;
+                    }
+                }
+            }
+        }
+    }
+}

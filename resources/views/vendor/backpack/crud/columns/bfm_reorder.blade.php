@@ -1,0 +1,1 @@
+<td>{{ ceil(($entry->{$column['name']})/2) }}</td>

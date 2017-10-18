@@ -1,0 +1,1 @@
+<span class="link">@lang('user/profile.activity.reported_abuse')</span>

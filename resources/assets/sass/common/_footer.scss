@@ -1,0 +1,82 @@
+.site-footer {
+    background: #232020;
+    color: $clr-white;
+    &__row {display: table-row;}
+    &__cell {
+        display: table-cell;
+        height: 1%;
+    }
+    a {color: currentColor;}
+    .container {
+        padding-top: _percentage(35);
+        padding-bottom: _percentage(88);
+        max-width: 812px;
+        margin: 0 auto;
+        @include breakpoint($mq-tablet-medium) {
+            padding-top: 30px;
+            padding-bottom: 140px;
+        }
+        @include breakpoint($mq-mobile) {
+            padding-top: 40px;
+            padding-bottom: 60px;
+        }
+    }
+    .row {
+        & + .row {
+            border-top: 1px solid rgba($clr-white, .15);
+            margin-top: percentage(20 / 812);
+            padding-top: percentage(20 / 812);
+            @include breakpoint($mq-mobile) {
+                margin-top: 0;
+                padding-top: 32px;
+            }
+        }
+    }
+    .logo {
+        display: block;
+        margin: 0 auto percentage(36 / 812);
+        width: 110px;
+        height: 97px;
+        svg {
+            fill: $clr-white;
+            @include anim($param: fill, $dur: .1s);
+        }
+        .no-touchevents & {
+            &:hover {
+                svg {fill: $clr-brown;}
+            }
+        }
+    }
+}
+.footer-links {
+    margin-top: percentage(58 / 812);
+    text-align: center;
+    color: #888;
+    font-size: 15px;
+    line-height: 16px;
+    li {
+        display: inline;
+        padding: 0 16px;
+        @include breakpoint($mq-mobile-small) {
+            &:first-child {
+                display: block;
+                margin-bottom: 8px;
+                & + li {
+                    border-left: 0;
+                }
+            }
+        }
+        & + li {
+            border-left: 1px solid rgba($clr-grey4, .6);
+        }
+    }
+    a {
+        &.active {color: $clr-white;}
+        .no-touchevents & {
+            &:hover {
+                color: $clr-grey3;
+                text-decoration: underline;
+            }
+        }
+    }
+}

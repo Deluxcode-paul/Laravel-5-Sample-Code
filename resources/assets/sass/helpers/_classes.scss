@@ -1,0 +1,36 @@
+.ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nowrap {white-space: nowrap;}
+
+.lowercase {text-transform: lowercase;}
+.uppercase {text-transform: uppercase;}
+.capitalize {text-transform: capitalize;}
+
+.a-left {text-align: left;}
+.a-right {text-align: right;}
+.a-center {text-align: center;}
+
+.f-left {float: left;}
+.f-right {float: right;}
+
+.ov-hidden {overflow: hidden;}
+
+.hide {display: none;}
+.hide-important {display: none !important;}
+
+.clearfix {
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+    &:after {clear: both;}
+}
+
+.is-loading,
+.loading {position: relative;}
+
+.js-hidden {display: none;}

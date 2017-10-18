@@ -1,0 +1,125 @@
+.box-tabs {
+    position: relative;
+    .tabset {
+        display: flex;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 26px;
+        @include breakpoint($mq-tablet-min) {
+            display: none;
+        }
+        li {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        a {
+            flex-grow: 1;
+            flex-shrink: 1;
+            -webkit-flex: 1;
+            text-decoration: none;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            background: $clr-text;
+            color: $clr-grey2;
+            padding: 17px;
+            position: relative;
+            transition: none;
+            box-shadow: 1px 0 0 rgba($clr-grey2, .2) inset;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                border: solid transparent;
+                border-width: 10px 13px;
+                border-top-color: $clr-brown;
+                margin-left: -13px;
+                opacity: 0;
+                left: -9999px;
+                right: 9999px;
+            }
+            .no-touchevents & {
+                &:hover {
+                    color: $clr-white;
+                    background: $clr-brown;
+                    &:after {
+                        left: 50%;
+                        right: auto;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        li.r-tabs-state-active a,
+        a.is-active {
+            background: $clr-brown;
+            color: $clr-white;
+            pointer-events: none;
+            &:after {
+                left: 50%;
+                right: auto;
+                opacity: 1;
+            }
+        }
+    }
+    .r-tabs-accordion-title {
+        text-align: left;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
+        a {
+            text-decoration: none;
+            display: block;
+            background: $clr-text;
+            color: $clr-grey2;
+            padding: 15px 48px 15px 15px;
+            position: relative;
+            transition: none;
+            box-shadow: 0 1px 0 rgba($clr-grey2, .2) inset;
+            text-transform: uppercase;
+            &:before,
+            &:after {
+                position: absolute;
+                content: '';
+                width: 2px;
+                height: 12px;
+                border-radius: 1px;
+                background: $clr-grey2;
+                top: 22px;
+                transform-origin: 50% 50% 0;
+                pointer-events: none;
+                @include anim;
+            }
+            &:before {
+                right: 26px;
+                transform: rotate(-45deg);
+            }
+            &:after {
+                right: 19px;
+                transform: rotate(45deg);
+            }
+        }
+        &.r-tabs-state-active {
+            a {
+                background: $clr-brown;
+                color: $clr-white;
+                &:before {
+                    background: $clr-white;
+                    margin-top: 6px;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+                &:after {
+                    margin-top: 6px;
+                    background: $clr-white;
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+    .tab-content {
+        padding: 23px 52px 50px;
+    }
+}

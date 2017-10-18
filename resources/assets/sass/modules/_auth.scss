@@ -1,0 +1,89 @@
+.page-auth {
+    position: relative;
+    background-size: cover;
+    background-position: center top;
+    background-color: $clr-text;
+    min-height: calc(100vh - 75px - 452px);
+    @include breakpoint($mq-desktop-min) {
+        min-height: calc(100vh - 94px - 450px);
+    }
+    @include breakpoint($mq-tablet-medium) {
+        min-height: calc(100vh - 62px - 400px);
+    }
+    @include breakpoint($mq-mobile-medium) {
+        min-height: calc(100vh - 62px - 390px);
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $clr-black;
+        opacity: .2;
+        z-index: 0;
+    }
+    &__container {
+        position: relative;
+        z-index: 1;
+        & > .spacer {
+            padding: _percentage(54) 0 _percentage(63);
+            @include breakpoint($mq-mobile-medium) {
+                padding: 20px 0 40px;
+            }
+        }
+    }
+    .heading-decorative {
+        color: $clr-grey1-light;
+        margin-bottom: _percentage(53);
+    }
+    &__forms {
+        margin: 0 auto;
+        max-width: 515px;
+        background: $clr-grey1-light;
+        @include fence($position: 'bottom', $direction: 'outside', $element: 'after');
+        @include breakpoint($mq-mobile-small) {
+            width: 100vw;
+            margin: 0 -15px;
+        }
+    }
+    .form {
+        &-actions {padding-top: 32px;}
+        &-row {
+            @include breakpoint($mq-mobile-small) {
+                flex-wrap: wrap;
+            }
+        }
+        &-item {
+            @include breakpoint($mq-mobile-small) {
+                flex: 1 0 auto;
+                &.a-right {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .box-tabs .tabset {
+        @include breakpoint($mq-tablet-min) {
+            display: flex;
+            font-size: 20px;
+            line-height: 24px;
+        }
+    }
+    .tab {
+        min-height: 0 !important;
+        @include breakpoint($mq-mobile-small) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        &-content {
+            @include breakpoint($mq-tablet-min) {
+                padding: 40px;
+            }
+            @include breakpoint($mq-mobile-small) {
+                padding: 40px 15px;
+            }
+        }
+    }
+}

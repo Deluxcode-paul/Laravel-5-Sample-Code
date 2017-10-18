@@ -1,0 +1,387 @@
+@import 'npm-vendors';
+
+.r-tabs .r-tabs-panel {padding: 0;}
+
+.swiper-button{
+    &-next,
+    &-prev {
+        margin-top: 0;
+        transform: translateY(-50%);
+        height: 17px * 2 + 30px;
+        width: 17px * 2 + 14px;
+        padding: 17px;
+        background: transparent;
+        background-image: none !important;
+        @include anim(background);
+        @include breakpoint($mq-mobile-medium){
+            padding: 10px;
+            width: 30px;
+        }
+        &:hover {
+            &:before,
+            &:after {background: $clr-brown;}
+        }
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 3px;
+            background: currentColor;
+            top: 50%;
+            margin-left: -3px;
+            box-shadow: 0 0 1px 1px rgba($clr-text, .2);
+            @include anim(background);
+            @include breakpoint($mq-mobile-medium){
+                width: 14px;
+                height: 2px;
+            }
+        }
+        &:before {
+            margin-top: -7px;
+            @include breakpoint($mq-mobile-medium){
+                margin-top: -5px;
+            }
+        }
+        &:after {
+            margin-top: 7px;
+            @include breakpoint($mq-mobile-medium){
+                margin-top: 5px;
+            }
+        }
+    }
+    &-next {
+        &:before {transform: rotate(50deg);}
+        &:after {transform: rotate(-50deg);}
+    }
+    &-prev {
+        &:before {transform: rotate(-50deg);}
+        &:after {transform: rotate(50deg);}
+    }
+    &-next {right: 0;}
+    &-prev {left: 0;}
+    &-white {color: $clr-white;}
+    &-black {color: $clr-black;}
+}
+
+.select2-container {
+    &--basic {
+        .selection {
+            display: block;
+        }
+        .select2-selection {
+            &--single {
+                background: $clr-grey1-light;
+                border: 1px solid rgba($clr-text, .2);
+                font-size: 16px;
+                line-height: 20px;
+                height: auto;
+                position: relative;
+                .form-grey & {
+                    background: $clr-white;
+                }
+                .select2-selection {
+                    &__rendered {padding: 12px 32px 12px 11px;}
+                    &__clear {
+                        position: absolute;
+                        width: 18px;
+                        height: 18px;
+                        background: $clr-purple;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 10px;
+                        font: 0/0 a;
+                        z-index: 1;
+                        &:before,
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            width: 10px;
+                            height: 2px;
+                            background: $clr-white;
+                            top: 50%;
+                            left: 50%;
+                            transform-origin: 0 0 0;
+                        }
+                        &:before {transform: rotate(-45deg) translate(-50%, -50%);}
+                        &:after {transform: rotate(45deg) translate(-50%, -50%);}
+                    }
+                    &__arrow {
+                        width: 32px;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        b {
+                            position: absolute;
+                            border: 8px solid transparent;
+                            border-top-color: $clr-purple;
+                            border-bottom-width: 0;
+                            top: 50%;
+                            margin-top: -4px;
+                            left: 5px;
+                        }
+                    }
+                }
+            }
+            &--multiple {
+                background: $clr-grey1-light;
+                border: 1px solid rgba($clr-text, .2);
+                height: auto;
+                min-height: 56px;
+                position: relative;
+                .form-grey & {
+                    background: $clr-white;
+                }
+                .select2{
+                    &-search {
+                        display: block;
+                        &__field {
+                            margin-top: -4px;
+                            line-height: 34px;
+                            font-size: 16px;
+                            color: $clr-text;
+                            margin-left: 10px;
+                            padding: 0 !important;
+                        }
+                    }
+                    &-selection {
+                        &__rendered {
+                            padding: 10px 32px 3px 14px;
+                            vertical-align: top;
+                        }
+                        &__arrow {
+                            width: 32px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            b {
+                                position: absolute;
+                                border: 8px solid transparent;
+                                border-top-color: $clr-purple;
+                                border-bottom-width: 0;
+                                top: 50%;
+                                margin-top: -4px;
+                                left: 5px;
+                            }
+                        }
+                        &__choice {
+                            float: left;
+                            background: rgba($clr-text, .2);
+                            padding: 0 40px 0 14px;
+                            margin: 0 7px 7px 0;
+                            line-height: 34px;
+                            font-size: 14px;
+                            color: $clr-black;
+                            position: relative;
+                            &__remove {
+                                position: absolute;
+                                display: block;
+                                width: 18px;
+                                height: 18px;
+                                background: $clr-color1;
+                                top: 50%;
+                                text-align: center;
+                                transform: translateY(-50%);
+                                right: 14px;
+                                color: $clr-white;
+                                font-size: 22px;
+                                line-height: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+            &__rendered {color: $clr-text;}
+        }
+        &.is-white {
+            .select2-selection {
+                &--single {background: $clr-white;}
+            }
+        }
+        &.select2.select2 {
+            &-container {
+                display: block;
+                width: 100% !important;
+                &--open {
+                    .select2-selection {
+                        &--single {background: $clr-white;}
+                    }
+                }
+            }
+            &-search {display: none;}
+        }
+        .select2 {
+            &-search {display: none;}
+            &-dropdown {
+                border-color: rgba($clr-text, .2);
+                border-radius: 0;
+                max-height: 284px;
+                overflow-y: auto;
+            }
+            &-results {
+                &__options {
+                    &[aria-multiselectable="true"] {
+                        .select2 {
+                            &-results {
+                                &__option {
+                                    &:after {
+                                        display: none;
+                                    }
+                                    &[aria-selected="true"] {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &__option {
+                    padding: 7px 11px;
+                    font-size: 16px;
+                    line-height: 20px;
+                    position: relative;
+                    z-index: 1;
+                    @include anim;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        z-index: -1;
+                        @include anim;
+                    }
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        border-bottom: 1px solid rgba($clr-text, .2);
+                        bottom: -1px;
+                        left: 11px;
+                        right: 11px;
+                        height: 1px;
+                    }
+                    &:last-child {
+                        &:after {display: none;}
+                    }
+                    .no-touchevents & {
+                        &:hover {
+                            color: $clr-white;
+                            &:before {background: $clr-color1;}
+                        }
+                    }
+                }
+            }
+        }
+        &.is-inline {
+            .select2 {
+                &-dropdown {
+                    padding-left: 70px;
+                }
+                &-results {
+                    &__option {
+                        &:before {
+                            left: -70px;
+                        }
+                    }
+                }
+            }
+            &.select2-container {
+                &--open {
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        height: 1px;
+                        left: 0;
+                        width: 70px;
+                        background: $clr-white;
+                        z-index: 1;
+                    }
+                    &.select2-container {
+                        &--below {
+                            &:before {
+                                bottom: 0;
+                            }
+                        }
+                    }
+                    &.select2-container {
+                        &--above {
+                            &:before {
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &--search {
+        .selection {
+            display: block;
+        }
+        &.select2.select2 {
+            &-container {
+                display: block;
+                width: 100% !important;
+                &--open {
+                    .select2-selection {
+                        // &--single {background: $clr-white;}
+                    }
+                }
+            }
+        }
+    }
+}
+select.parsley-error + .select2.select2-container {
+    .select2-selection {
+        border-color: #e00202;
+    }
+}
+select.parsley-success + .select2-container {
+    .select2-selection {
+        border-color: $clr-green;
+    }
+}
+
+// VueJS Transitions
+
+// fade
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
+
+// slide-fade
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: none;
+}
+.slide-fade-enter, .slide-fade-leave-active {
+    padding-left: 10px;
+    opacity: 0;
+}
+
+
+// Magnific Popup layers
+.mfp{
+    &-bg{
+        z-index: 2042;
+    }
+    &-wrap{
+        z-index: 2043;
+    }
+}
+
+
+
+.alertify .ajs-dimmer,
+.alertify .ajs-modal {
+    z-index: 2000;
+}

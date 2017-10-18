@@ -1,0 +1,52 @@
+//
+// THEME COLORS
+// basic colors from mockups
+//
+
+$clr-color1: #7a087a;
+$clr-primary: $clr-color1;
+$clr-purple: $clr-color1;
+
+$clr-color2: #c79a4b;
+$clr-secondary: $clr-color2;
+$clr-brown: $clr-color2;
+
+$clr-color3: #cb2028;
+$clr-red: $clr-color3;
+
+$clr-color4: #3a5999;
+$clr-blue: $clr-color4;
+
+$clr-color5: #1ca43c;
+$clr-green: $clr-color5;
+
+$clr-text: #48494c;
+$clr-text2: #404247;
+
+$clr-grey1: #f0f0f0;
+$clr-grey1-light: lighten($clr-grey1, 3.5%);
+
+$clr-grey2: #969696;
+
+$clr-grey3: #babcbe;
+
+$clr-grey4: #737578;
+
+$clr-grey5: #8b8d90;
+
+$clr-grey6: #b0b0b1;
+
+$clr-black-light: #232020;
+
+//
+// NEUTRAL COLORS
+// basic black and white colors and shades
+//
+
+$clr-white: #fff;
+$clr-black: #000;
+
+//
+// Additional abstractions
+//
+$clr-body: $clr-white;

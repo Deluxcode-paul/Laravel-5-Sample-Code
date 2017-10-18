@@ -1,0 +1,109 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "backpack/base": "0.7.6",
+        "backpack/crud": "3.1.*",
+        "backpack/permissionmanager": "2.1.*",
+        "laravelcollective/html": "5.3.*",
+        "stolz/assets": "^0.1.9",
+        "barryvdh/laravel-dompdf": "dev-master",
+        "davejamesmiller/laravel-breadcrumbs": "3.0.1",
+        "roumen/sitemap": "v2.6.4",
+        "bfm/backpack-assets": "^1.0.0",
+        "bfm/localization": "^1.0",
+        "bfm/bfm-image": "^1.0",
+        "bfm/backpack-cms": "^1.0",
+        "intervention/image": "^2.3",
+        "sseffa/video-api": "^2.1",
+        "magyarjeti/laravel-lipsum": "dev-master",
+        "bfm/share": "^1.0",
+        "bfm/flex-cms": "^2.1",
+        "bfm/newsletter": "^1.1",
+        "prologue/alerts": "0.4.*",
+        "jenssegers/agent": "^2.3"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*",
+        "squizlabs/php_codesniffer": "2.6.2",
+        "phpmd/phpmd": "2.4.3",
+        "bluefountainmedia/coding_standards": "dev-master",
+        "barryvdh/laravel-ide-helper": "~2.0@dev",
+        "barryvdh/laravel-debugbar": "^2.3"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/coding_standards.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/bfm-backpack-assets.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/flex-cms.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/localization.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/bfm-image.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/bfm-backpack-cms.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/bfm-laravel-share.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bluefountainmedia/bfm-laravel-newsletter.git"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

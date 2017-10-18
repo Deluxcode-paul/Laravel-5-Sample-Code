@@ -1,0 +1,25 @@
+.breadcrumb {
+    padding: 13px 0;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 20px;
+    color: currentColor;
+    @include breakpoint($mq-mobile-medium) {
+        display: none;
+    }
+    a {
+        color: currentColor;
+        &:hover {text-decoration: underline;}
+    }
+    li {
+        display: inline;
+        &.active {font-weight: bold;}
+        & + li {
+            &:before {
+                content: '/';
+                font-weight: 400;
+                margin: 0 6px;
+            }
+        }
+    }
+}

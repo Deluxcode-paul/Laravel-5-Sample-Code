@@ -1,0 +1,71 @@
+//colors
+
+@clr-grey: #e3e3e3;
+@clr-white: #fff;
+@clr-red: #e62739;
+@clr-cyan: #3fb0ac;
+@clr-violet: #16174f;
+
+//jqTree
+body {
+    ul.jqtree {
+        &-tree {
+            & > li {
+                padding: 0 10px;
+                line-height: 30px;
+                margin-bottom: 0;
+            }
+            & > li:nth-child(odd){
+                background: @clr-grey;
+            }
+            & > li:nth-child(even){
+                background: @clr-white;
+            }
+            li.jqtree-folder {
+                margin-bottom: 0;
+            }
+            .jqtree-toggler.jqtree-toggler-left {
+                vertical-align: top;
+            }
+            .jqtree-title.jqtree-title-folder {
+                font-weight: bold;
+            }
+        }
+    }
+    .jqtree {
+        &-element {
+            & a {
+                display: inline-block;
+                margin: 0 10px;
+                vertical-align: top;
+                width: 20px;
+                height: 20px;
+                padding: 2px;
+                &.delete-btn {
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                        fill: @clr-red;
+                    }
+                }
+                &.edit {
+                    svg {
+                        fill: @clr-violet;
+                    }
+                }
+                &.construct {
+                    svg {
+                        fill: @clr-cyan;
+                    }
+                }
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        &-controls {
+            float: right;
+        }
+    }
+}

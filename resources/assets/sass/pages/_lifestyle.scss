@@ -1,0 +1,178 @@
+.lifestyle-page {
+    background: $clr-grey1-light;
+    .page-heading {
+        overflow: hidden;
+        &.has-banner .page-heading__spacer {
+            margin-bottom: _percentage(475 / 2);
+            @include breakpoint($mq-mobile-medium) {
+                margin-bottom: 43px;
+            }
+        }
+    }
+    &__slider {
+        margin-top: _percentage(-475 / 2);
+        margin-bottom: _percentage(47);
+        position: relative;
+        z-index: 1;
+        background: $clr-white;
+        @include breakpoint($mq-mobile-medium){
+            margin-top: -43px;
+        }
+        .swiper-container {
+            position: relative;
+            padding-bottom: _percentage(475);
+            @include bp-max($mq-mobile-medium){
+                padding-bottom: _percentage(306, 290);
+            }
+        }
+        .swiper-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .item {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+            padding: 0 7.08%;
+            box-sizing: border-box;
+            @include breakpoint($mq-mobile-medium) {
+                padding: 24px 30px;
+            }
+            &.swiper-slide-active .content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50%;
+            &:before {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                content: '';
+                z-index: 1;
+                background: linear-gradient(to bottom, rgba($clr-black, 0) 0%, rgba($clr-black, 1) 100%);
+            }
+        }
+        .ribbon {
+            position: absolute;
+            top: -1px;
+            right: 15px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .content {
+            pointer-events: none;
+            max-width: 720px;
+            position: relative;
+            z-index: 2;
+            color: $clr-white;
+            opacity: 0;
+            transition: opacity .5s, transform .3s;
+            transition-delay: .15s;
+            transform: translateY(-100px);
+            will-change: transform, opacity;
+            padding-bottom: 44px;
+            @include bp-max($mq-tablet){
+                padding-bottom: 33px;
+            }
+            @include bp-max($mq-mobile){
+                padding-bottom: 0;
+            }
+            .category {
+                display: block;
+                font-size: 16px;
+                line-height: 26px;
+                font-weight: 700;
+                color: $clr-grey5;
+                text-transform: uppercase;
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 14px;
+                }
+            }
+            .title {
+                font-size: 30px;
+                line-height: 34px;
+                font-weight: 600;
+                color: $clr-grey1-light;
+                display: inline-block;
+                pointer-events: auto;
+                @include breakpoint($mq-tablet-medium) {
+                    font-size: 28px;
+                    line-height: 30px;
+                    max-height: 60px;
+                    overflow: hidden;
+                }
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 24px;
+                }
+                .no-touchevents & {
+                    &:hover {color: $clr-color2;}
+                }
+            }
+            .desc {
+                margin-top: 10px;
+                font-size: 16px;
+                line-height: 28px;
+                color: $clr-white;
+                @include breakpoint($mq-tablet-medium) {
+                    margin-top: 8px;
+                    line-height: 24px;
+                }
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+            .meta {
+                margin-top: 15px;
+                font-size: 16px;
+                line-height: 26px;
+                color: $clr-white;
+                @include breakpoint($mq-tablet-medium) {
+                    margin-top: 10px;
+                }
+                @include breakpoint($mq-mobile-medium) {
+                    font-size: 14px;
+                }
+                span {
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+                a {
+                    pointer-events: auto;
+                    display: inline-block;
+                    margin-left: 5px;
+                    font-style: italic;
+                    color: inherit;
+                    .no-touchevents & {
+                        &:hover {color: $clr-color2;}
+                    }
+                }
+            }
+        }
+    }
+    &__navigation {
+        .swiper-button-next,
+        .swiper-button-prev {
+            &.swiper-button-disabled {
+                pointer-events: auto;
+                opacity: .5;
+            }
+        }
+    }
+}

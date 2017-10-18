@@ -1,0 +1,10 @@
+// Widths
+$min-width: 320px;
+$site-width: 1200px;
+
+$z-layers: (
+    "default": 1,
+    "below": -1,
+    "fixed": 2000,
+    "modal": 2050
+);

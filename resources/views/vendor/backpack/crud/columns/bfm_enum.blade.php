@@ -1,0 +1,1 @@
+<td>{{ $column['options'][$entry->{$column['name']}] }}</td>

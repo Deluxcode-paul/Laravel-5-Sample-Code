@@ -1,0 +1,78 @@
+.footer-nav {
+    font-weight: bold;
+    font-size: 16px;
+    @include breakpoint($mq-mobile) {
+        cursor: pointer;
+        border-top: 1px solid rgba($clr-white, .15);
+        &.open {
+            .footer-nav__btn {
+                &:before {
+                    transform: translateY(-50%) rotate(45deg);
+                }
+                &:after {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+            ul {
+                max-height: 1000px;
+            }
+        }
+    }
+    &__btn {
+        display: none;
+        @include breakpoint($mq-mobile) {
+            display: block;
+            width: 100vw;
+            margin: 0 -20px;
+            text-align: left;
+            background: transparent;
+            border: 0;
+            padding: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+            color: $clr-grey4;
+            position: relative;
+            line-height: 44px;
+            &:before,
+            &:after {
+                position: absolute;
+                content: '';
+                width: 2px;
+                height: 12px;
+                border-radius: 1px;
+                background: $clr-grey4;
+                top: 50%;
+                transform-origin: 50% 50% 0;
+                @include anim;
+            }
+            &:before {
+                right: 31px;
+                transform: translateY(-50%) rotate(-45deg);
+            }
+            &:after {
+                right: 24px;
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+    }
+    a {
+        color: $clr-grey4;
+        &.active {color: $clr-white;}
+        .no-touchevents & {
+            &:hover {color: $clr-purple;}
+        }
+        @include breakpoint($mq-mobile) {
+            display: block;
+        }
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        @include breakpoint($mq-mobile) {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            @include anim;
+        }
+    }
+}

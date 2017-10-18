@@ -1,0 +1,64 @@
+body ul.jqtree-tree > li {
+    padding: 0 10px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+body ul.jqtree-tree > li:nth-child(odd) {
+    background: #e3e3e3;
+}
+body ul.jqtree-tree > li:nth-child(even) {
+    background: #fff;
+}
+body ul.jqtree-tree li.jqtree-folder {
+    margin-bottom: 0;
+}
+body ul.jqtree-tree .jqtree-toggler.jqtree-toggler-left {
+    vertical-align: top;
+}
+body ul.jqtree-tree .jqtree-title.jqtree-title-folder {
+    font-weight: bold;
+}
+body .jqtree-element a {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    color: #000;
+}
+body .jqtree-element a:hover {
+    color: #7673BD;
+}
+body .jqtree-element a.delete-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #e62739;
+}
+body .jqtree-element a.edit svg {
+    fill: #16174f;
+}
+body .jqtree-element a.construct svg {
+    fill: #3fb0ac;
+}
+body .jqtree-element a svg {
+    width: 100%;
+    height: 100%;
+}
+body .jqtree-controls {
+    float: right;
+}
+
+.error {
+    color: #dd4b39;
+}
+
+.dropzone {
+    width: 100%;
+    height: 100px;
+
+    border: 2px dashed #3C8DBC;
+
+    line-height: 100px;
+    text-align: center;
+}

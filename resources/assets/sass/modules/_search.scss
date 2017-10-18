@@ -1,0 +1,193 @@
+.search {background: $clr-grey1-light;}
+.search-heading {
+    background-color: $clr-text;
+    background-size: cover;
+    background-position: center center;
+    &__spacer {
+        padding: _percentage(71) 0;
+        @include breakpoint($mq-mobile) {
+            padding: 52px 0;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            padding: 22px 0 73px;
+        }
+        @include breakpoint($mq-mobile-small) {
+            padding: 22px 0 44px;
+        }
+    }
+    @include fence($position: 'bottom', $direction: 'inside', $element: 'after');
+}
+.search-tabs {
+    display: flex;
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    background: $clr-text;
+    margin-top: -30px;
+    color: #a7a8ab;
+    white-space: nowrap;
+    @include breakpoint($mq-tablet-medium) {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    @include breakpoint($mq-mobile) {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    @include breakpoint($mq-mobile-medium) {
+        flex-wrap: wrap;
+        margin-top: -50px;
+    }
+    @include breakpoint($mq-mobile-small) {
+        margin-top: -22px;
+    }
+    li {
+        flex: 1 0 0%;
+        box-shadow: 1px 0 0 rgba($clr-grey2, .2) inset;
+        @include breakpoint($mq-mobile-medium) {
+            flex: 0 0 50%;
+            box-shadow: 1px 1px 0 rgba($clr-grey2, .2) inset;
+        }
+        @include breakpoint($mq-mobile-small) {
+            flex: 0 0 100%;
+            box-shadow: 0 1px 0 rgba($clr-grey2, .2) inset;
+        }
+    }
+    a {
+        color: currentColor;
+        display: block;
+        position: relative;
+        padding: 15px;
+        @include breakpoint($mq-mobile-small) {
+            padding: 10px 15px;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            border: solid transparent;
+            border-width: 10px 16px 0;
+            border-top-color: $clr-text;
+            margin-top: -10px;
+            opacity: 0;
+            margin-left: -16px;
+            @include anim;
+            @include anim-param(opacity, margin-top, border-top-color);
+            @include breakpoint($mq-mobile-medium) {
+                display: none;
+            }
+        }
+        &.is-disabled {
+            pointer-events: none;
+            opacity: .6;
+        }
+        .no-touchevents & {
+            &:not(.is-disabled):hover {
+                color: #fff;
+                background: $clr-brown;
+                &:after {
+                    opacity: 1;
+                    margin-top: 0;
+                    border-top-color: $clr-brown;
+                }
+            }
+        }
+        &.is-active {
+            color: #fff;
+            background: $clr-brown;
+            &:after {
+                opacity: 1;
+                margin-top: 0;
+                border-top-color: $clr-brown;
+            }
+        }
+    }
+    .count {
+        font-weight: 300;
+    }
+}
+.form-search {
+    background: #f9f9f9;
+    position: relative;
+    border: 1px solid #d6d6d6;
+    height: 77px;
+    display: flex;
+    padding-right: 76px;
+    justify-content: space-between;
+    @include breakpoint($mq-tablet-medium) {
+        height: 50px;
+    }
+    .btn-submit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 75px;
+        background: $clr-brown;
+        margin: 0;
+        border: none;
+        @include anim(background-color);
+        @include breakpoint($mq-tablet-medium) {
+            width: 50px;
+        }
+        svg.icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            fill: #f9f9f9;
+            width: 24px;
+            height: 24px;
+            @include breakpoint($mq-tablet-medium) {
+                width: 60px;
+            }
+        }
+        .no-touchevents & {
+            &:hover {
+                background: $clr-purple;
+            }
+        }
+    }
+    input {
+        border: none;
+        background: transparent;
+        flex: 0 1 100%;
+        width: 100%;
+        font-size: 32px;
+        line-height: 45px;
+        padding: 15px 5px;
+        color: $clr-text;
+        &:-moz-placeholder {color: $clr-grey2;}
+        &::-moz-placeholder {color: $clr-grey2;}
+        &:-ms-input-placeholder {color: $clr-grey2;}
+        &::-webkit-input-placeholder {color: $clr-grey2;}
+        @include breakpoint($mq-tablet-medium) {
+            font-size: 22px;
+            line-height: 28px;
+            padding: 12px 5px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            font-size: 20px;
+            padding: 12px 15px;
+        }
+    }
+    label {
+        font-size: 32px;
+        line-height: 35px;
+        padding: 20px 2px 20px 21px;
+        font-style: italic;
+        color: #8b8d90;
+        @include breakpoint($mq-tablet-medium) {
+            font-size: 22px;
+            line-height: 24px;
+            padding: 12px 2px 12px 21px;
+        }
+        @include breakpoint($mq-mobile-medium) {
+            display: none;
+        }
+    }
+}

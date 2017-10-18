@@ -1,0 +1,88 @@
+.form-group label em {
+    color: #f55753;
+}
+
+.content-header > .breadcrumb {
+    display: block;
+    float: none;
+    clear: both;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.content-header > .breadcrumb > li > a:hover {
+    text-decoration: underline;
+}
+
+table.table tbody td {
+    vertical-align: middle;
+}
+
+.btn-xs .badge {
+    top: -1px;
+    margin-left: 3px;
+}
+
+span.btn-sm.btn-primary.active {
+    cursor:default;
+}
+
+.fa {
+    margin-right: 2px;
+}
+
+.cook-time-wrapper .col-sm-2 {
+    padding-left: 0;
+}
+
+.cook-time-wrapper .input-group {
+    float: left;
+    padding-right: 15px;
+}
+
+.backpack-filters .btn {
+    margin-bottom: 3px;
+}
+
+.backpack-filters .filter-wrapper {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.backpack-filters .form-control {
+    font-weight: normal;
+}
+
+.col-filter-dates .form-group {
+    float: left;
+    width: 50%;
+}
+
+.cms-box .form-group label small {
+    color: #f55753;
+}
+
+.bfm-checkbox,
+.bfm-checkbox:link,
+.bfm-checkbox:active,
+.bfm-checkbox:visited {
+    color: #333;
+}
+
+.bfm-checkbox:hover {
+    color: #3c8dbc;
+}
+
+.btn-default .badge {
+    color: #444;
+    background-color: #ccc;
+}
+
+.input-group .input-group-addon {
+    background-color: #eee;
+}
+
+td i.fa-star {
+    color: #444;
+}

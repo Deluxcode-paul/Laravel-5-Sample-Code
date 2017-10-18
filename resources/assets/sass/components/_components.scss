@@ -1,0 +1,20 @@
+@import 'loader';
+@import 'grid';
+@import 'aside';
+@import 'item-recipe';
+@import 'item-article';
+@import 'item-related';
+@import 'item-community';
+@import 'item-chef';
+@import 'actions-nav';
+@import 'pager';
+@import 'lists';
+@import 'breadcrumbs';
+@import 'heading-decorative';
+@import 'separator';
+@import 'socials';
+
+.box {
+    background: $clr-white;
+    border: 1px solid #e1e1e1;
+}

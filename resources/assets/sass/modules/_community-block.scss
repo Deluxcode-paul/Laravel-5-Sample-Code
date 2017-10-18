@@ -1,0 +1,300 @@
+.community-block {
+    padding-top: 95px;
+    @include breakpoint($mq-tablet-medium) {
+        padding-top: 30px;
+    }
+    .actions {
+        margin-top: 35px;
+    }
+    .tab {
+        @include breakpoint($mq-tablet-min) {
+            padding-bottom: 30px;
+        }
+    }
+    &__header {
+        padding: 20px 0;
+        margin-bottom: 28px;
+        border-bottom: 1px solid rgba($clr-text, .2);
+    }
+    &__notify {
+        position: relative;
+        text-align: center;
+        line-height: 26px;
+        font-size: 20px;
+        margin: 18px 0 -20px;
+        font-weight: 600;
+        color: rgba($clr-text, .35);
+        z-index: 1;
+        padding: 15px 10px;
+        .link {
+            text-decoration: underline;
+            .no-touchevents & {
+                &:hover {color: $clr-color2;}
+            }
+        }
+        .fake {
+            &-input {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -1px;
+                top: 0;
+                border: 1px solid rgba($clr-text, .2);
+                background: $clr-white;
+                padding: 0 18px;
+                font-size: 16px;
+                line-height: 56px;
+                text-align: left;
+                z-index: -1;
+                pointer-events: none;
+                overflow: hidden;
+                @include breakpoint($mq-tablet-min) {
+                    text-indent: -9999px;
+                }
+            }
+            &-button {
+                position: absolute;
+                right: 0;
+                bottom: -1px;
+                top: 0;
+                color: $clr-white;
+                background: rgba($clr-color1, .35);;
+                padding: 0 44px;
+                font-size: 16px;
+                line-height: 56px;
+                text-align: left;
+                z-index: -1;
+                pointer-events: none;
+                @include breakpoint($mq-tablet-min) {
+                    display: none;
+                }
+            }
+        }
+    }
+    &__rating {
+        margin: -14px 0 20px;
+        padding: 0 10px;
+        span {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 18px;
+            color: $clr-text2;
+            vertical-align: middle;
+        }
+        .rating {
+            display: inline-block;
+            font-size: 0;
+            height: 18px;
+            margin-right: 10px;
+            vertical-align: middle;
+            li {
+                display: inline-block;
+            }
+            .icon {
+                display: block;
+                width: 18px;
+                height: 18px;
+                margin-right: 6px;
+                fill: $clr-white;
+                stroke: $clr-color1;
+                stroke-width: 8px;
+            }
+            &[data-rating="1"] {
+                li:nth-child(1) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="2"] {
+                li:nth-child(1),
+                li:nth-child(2) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="3"] {
+                li:nth-child(1),
+                li:nth-child(2),
+                li:nth-child(3) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="4"] {
+                li:nth-child(1),
+                li:nth-child(2),
+                li:nth-child(3),
+                li:nth-child(4) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="5"] {
+                li {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+        }
+    }
+    &__form {
+        .form-community {
+            margin-top: 26px;
+            .form-row {
+                align-items: flex-start;
+                & > .form-item {
+                    &.is-inline {
+                        position: relative;
+                        .form-input {
+                            flex: 1;
+                            margin: 0;
+                        }
+                        .form-label {
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            color: $clr-text;
+                            font-size: 16px;
+                            line-height: 30px;
+                            padding: 14px 19px;
+                            font-weight: 400;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+            .form-label {
+                font-size: 16px;
+                float: left;
+            }
+            .form-input {
+                input[type="text"],
+                input[type="search"],
+                input[type="password"],
+                input[type="tel"],
+                input[type="email"],
+                textarea {
+                    padding: 14px 19px;
+                }
+                textarea {
+                    height: 150px;
+                }
+            }
+            .rating {
+                float: left;
+                display: flex;
+                flex-direction: row-reverse;
+                font-size: 0;
+                height: 18px;
+                margin-left: 10px;
+                vertical-align: middle;
+                li {
+                    display: inline-block;
+                    &:hover {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                    &:hover ~ li{
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                .icon {
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 6px;
+                    fill: $clr-white;
+                    stroke: $clr-color1;
+                    stroke-width: 8px;
+                }
+                label {
+                    cursor: pointer;
+                    display: inline-block;
+                }
+                input {
+                    display: none;
+                }
+                input:checked + .icon {
+                    fill: $clr-color1;
+                }
+                &[data-rating="1"] {
+                    li:nth-child(5) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="2"] {
+                    li:nth-child(5),
+                    li:nth-child(4) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="3"] {
+                    li:nth-child(5),
+                    li:nth-child(4),
+                    li:nth-child(3) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="4"] {
+                    li:nth-child(5),
+                    li:nth-child(4),
+                    li:nth-child(3),
+                    li:nth-child(2) {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+                &[data-rating="5"] {
+                    li {
+                        .icon {
+                            fill: $clr-color1;
+                        }
+                    }
+                }
+            }
+            .select2-container--basic .select2-selection--multiple {
+                padding-left: 56px;
+            }
+            .form-actions {
+                text-align: left;
+                padding-top: 20px;
+                .btn {
+                    border: 0;
+                }
+                .link {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: $clr-color1;
+                    text-decoration: underline;
+                    margin-left: 30px;
+                    background: none;
+                    border: 0;
+                    font-weight: 400;
+                    .no-touchevents & {
+                        &:hover {color: $clr-color2;}
+                    }
+                    @include breakpoint($mq-mobile-medium) {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

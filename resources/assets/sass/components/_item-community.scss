@@ -1,0 +1,265 @@
+.item-community {
+    padding: 32px 44px 0;
+    background: $clr-white;
+    border: 1px solid rgba($clr-text, .2);
+    @include breakpoint($mq-mobile-medium) {
+        padding: 20px 20px 0;
+    }
+    & + & {
+        margin-top: 12px;
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        @include breakpoint($mq-mobile-medium) {
+            display: block;
+        }
+    }
+    &__photo {
+        flex: 0 0 70px;
+        @include breakpoint($mq-mobile-medium) {
+            flex: 1 0 auto;
+            margin-bottom: 10px;
+        }
+        a {
+            display: block;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid $clr-color2;
+            overflow: hidden;
+            @include anim;
+            @include breakpoint($mq-mobile-medium) {
+                width: 56px;
+                height: 56px;
+            }
+            img {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+                border-radius: 50%;
+            }
+            .no-touchevents & {
+                &:hover {border-color: $clr-color1;}
+            }
+        }
+    }
+    &__content {
+        flex: 0 0 calc(100% - 100px);
+        width: calc(100% - 100px);
+        padding-bottom: 12px;
+        @include breakpoint($mq-mobile-medium) {
+            flex: 1 0 auto;
+            width: 100%;
+        }
+        .title {
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 700;
+            color: $clr-text2;
+            margin-bottom: 10px;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 16px;
+                line-height: 20px;
+                margin-bottom: 4px;
+            }
+            a {
+                color: inherit;
+                .no-touchevents & {
+                    &:hover {color: $clr-color1;}
+                }
+            }
+        }
+        .author {
+            font-size: 15px;
+            line-height: 18px;
+            font-style: italic;
+            color: $clr-text;
+            margin-bottom: 14px;
+            span {
+                font-style: normal;
+            }
+        }
+        .descr {
+            font-size: 16px;
+            line-height: 26px;
+            color: $clr-text2;
+            margin-bottom: 20px;
+            @include breakpoint($mq-mobile-medium) {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+        .rating {
+            font-size: 0;
+            height: 18px;
+            margin-bottom: 10px;
+            li {
+                display: inline-block;
+            }
+            .icon {
+                display: block;
+                width: 18px;
+                height: 18px;
+                margin-right: 6px;
+                fill: $clr-white;
+                stroke: $clr-color1;
+                stroke-width: 8px;
+            }
+            &[data-rating="1"] {
+                li:nth-child(1) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="2"] {
+                li:nth-child(1),
+                li:nth-child(2) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="3"] {
+                li:nth-child(1),
+                li:nth-child(2),
+                li:nth-child(3) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="4"] {
+                li:nth-child(1),
+                li:nth-child(2),
+                li:nth-child(3),
+                li:nth-child(4) {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+            &[data-rating="5"] {
+                li {
+                    .icon {
+                        fill: $clr-color1;
+                    }
+                }
+            }
+        }
+        .tags, .chefs {
+            padding-top: 0;
+            font-size: 0;
+            li {
+                display: inline-block;
+                margin: 0 7px 7px 0;
+                a {
+                    display: block;
+                    font-size: 14px;
+                    line-height: 34px;
+                    color: $clr-black;
+                    background: rgba($clr-text, .1);
+                    padding: 0 18px;
+                    position: relative;
+                    z-index: 1;
+                    &:before, &:after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba($clr-text, .1);
+                        z-index: -1;
+                    }
+                    &:after {
+                        background: $clr-color1;
+                        transform: scale(0);
+                        opacity: 0;
+                        @include anim;
+                    }
+                    .no-touchevents & {
+                        &:hover {
+                            color: $clr-white;
+                            &:after {
+                                transform: scale(1);
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__meta {
+        padding: 18px 0;
+        border-top: 1px solid rgba($clr-text, .2);
+        display: flex;
+        justify-content: space-between;
+    }
+    &__info {
+        .item {
+            font-size: 16px;
+            line-height: 16px;
+            color: $clr-grey3;
+            margin-right: 18px;
+            float: left;
+            display: flex;
+            align-items: flex-end;
+            .icon {
+                fill: $clr-color2;
+                @include anim;
+                &-heart {
+                    width: 17px;
+                    height: 14px;
+                }
+                &-view {
+                    width: 20px;
+                    height: 14px;
+                }
+                &-comment {
+                    width: 15px;
+                    height: 14px;
+                }
+            }
+            span {
+                margin-left: 6px;
+                dipslay: inline-block;
+            }
+        }
+        a.item {
+            @include anim;
+            .no-touchevents & {
+                &:hover {
+                    color: $clr-color1;
+                    .icon {fill: $clr-color1;}
+                }
+            }
+        }
+    }
+    &__actions {
+        .link {
+            font-size: 14px;
+            line-height: 14px;
+            text-decoration: underline;
+            display: block;
+            & + .link {
+                position: relative;
+                margin-left: 20px;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: -11px;
+                    top: 0;
+                    bottom: 0;
+                    width: 1px;
+                    background: $clr-grey3;
+                }
+            }
+            .no-touchevents & {
+                &[href]:hover {color: $clr-color2;}
+            }
+        }
+    }
+}

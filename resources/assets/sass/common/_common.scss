@@ -1,0 +1,95 @@
+@import 'header';
+@import 'main-nav';
+@import 'footer';
+@import 'footer-nav';
+
+html {overflow-y: scroll;}
+html, body {
+    height: 100%;
+    text-rendering: optimizeLegibility;
+}
+body {
+    margin: 0;
+    color: $clr-text;
+    font: #{$fz}/#{$lh} $font-primary;
+    background: $clr-body;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+    min-width: $min-width;
+}
+a {
+    color: $clr-purple;
+    @include anim;
+    @include anim-param(color, background, border-color);
+}
+a:not[class] {
+    text-decoration: underline;
+    &:hover {text-decoration: none;}
+}
+input,textarea,select,button {
+    font: #{$fz}/#{$lh} $font-primary;
+    vertical-align: middle;
+}
+textarea {
+    resize: vertical;
+    overflow: auto;
+    vertical-align: top;
+}
+.site-wrapper {
+    overflow: hidden;
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+    &__row {
+        display: table-row;
+    }
+}
+.site-footer {display: table-footer-group;}
+.site-width {
+    margin: 0 auto;
+    width: 100%;
+    max-width: $site-width + 30px;
+    padding: 0 15px;
+    @include breakpoint($mq-tablet-medium){
+        max-width: $site-width + 40px;
+        padding: 0 20px;
+    }
+    @include breakpoint($mq-mobile-medium){
+        max-width: $site-width + 30px;
+        padding: 0 15px;
+    }
+}
+.site-content {
+    padding-top: 94px;
+    @include breakpoint($mq-tablet-medium) {
+        padding-top: 62px;
+    }
+}
+.content-overlay {
+    position: fixed;
+    z-index: 1500;
+    background: rgba($clr-black, .7);
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    overflow: hidden;
+    @include anim($param: opacity, $dur: .3s);
+    &.is-active {
+        right: 0;
+        opacity: 1;
+        @include breakpoint($mq-tablet) {
+            opacity: 0;
+        }
+    }
+    body.with-overlay & {
+        right: 0;
+        opacity: 1;
+        @include breakpoint($mq-tablet) {
+            opacity: 0;
+        }
+    }
+}
